@@ -1,2 +1,3 @@
-# config-snowflakes
-System configs that are uniquely, unapologetically mine!
+# dot-snowflakes
+
+> Dotfiles and system configs that are unapologetically unique
