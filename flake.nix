@@ -6,36 +6,28 @@
     flake-utils.url = "github:numtide/flake-utils";
     home-manager.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    statix.url = "github:oppiliappan/statix";
   };
 
-  outputs = inputs@{
+  outputs = inputs @ {
     flake-parts,
     flake-utils,
     home-manager,
-    nixpkgs,
+    treefmt-nix,
     ...
   }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
+    flake-parts.lib.mkFlake {inherit inputs;} {
       systems = flake-utils.lib.defaultSystems;
 
       imports = [
+        treefmt-nix.flakeModule
         home-manager.flakeModules.home-manager
 
         ./home-configurations/flake-module.nix
+        ./per-system/lint.nix
+        ./per-system/treefmt.nix
         ./per-system/dev-shell.nix
       ];
-
-      flake = {
-      };
-
-      perSystem = {
-        config,
-        self',
-        inputs',
-        pkgs,
-        system,
-        ... 
-      }: {
-      };
     };
 }
