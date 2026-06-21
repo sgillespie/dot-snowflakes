@@ -7,7 +7,11 @@
     file = {
       # GPG
       ".gnupg/gpg.conf".source = ../dotfiles/gnupg/gpg.conf;
+      ".gnupg/gpg-agent.conf".source = ../dotfiles/gnupg/gpg-agent.conf;
       ".gnupg/scdaemon.conf".source = ../dotfiles/gnupg/scdaemon.conf;
+
+      # Shell
+      ".zshrc".source = ../dotfiles/zsh/zshrc;
     };
 
     # Brave isn't in pacman official repositories, so install it from nixpkgs
