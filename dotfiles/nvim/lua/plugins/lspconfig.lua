@@ -1,0 +1,49 @@
+return {
+  {
+    "neovim/nvim-lspconfig",
+    priority = 1000,
+    lazy = false,
+
+    config = function(_, opts)
+      vim.lsp.set_log_level('info')
+      vim.lsp.enable('hls')
+      vim.lsp.config('hls', {
+        filetypes = { 'haskell', 'lhaskell' },
+        cmd = {
+          "haskell-language-server",
+          "--lsp",
+          -- Uncomment me to debug HLS
+          -- "--debug",
+        };
+        settings = {
+          haskell = {
+            cabalFormattingProvider = "cabal-gild",
+            -- Override per-project via HLS_FORMATTER in .envrc
+            -- formattingProvider = "fourmolu",
+            -- Uncomment me to work on hydra-tools
+            -- formattingProvider = "ormolu",
+            -- Uncomment me to work on HLS
+            -- formattingProvider = "stylish-haskell",
+            formattingProvider = "fourmolu",
+            sessionLoading = "multipleComponents",
+          },
+        },
+        on_init = function(client)
+          local fmt = os.getenv("HLS_FORMATTER")
+          if fmt then
+            client.settings.haskell.formattingProvider = fmt
+          end
+          return true
+        end,
+      })
+    end,
+
+    keys = {
+      { "grn", function() vim.lsp.buf.rename() end, desc = "LSP Rename" },
+      { "gra", function() vim.lsp.buf.code_action() end, desc = "LSP Code Actions" },
+      { "gq", function() vim.lsp.buf.format() end, desc = "LSP Format" },
+      { "gL", "<cmd>LspLog<cr>", desc = "LSP Log" },
+      { "gR", "<cmd>LspRestart<cr>", desc = "LSP Restart" },
+    },
+  },
+}

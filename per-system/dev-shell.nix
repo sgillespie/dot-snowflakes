@@ -4,6 +4,7 @@ _parts: {
       packages = with pkgs; [
         alejandra
         deadnix
+        home-manager
         just
         statix
       ];

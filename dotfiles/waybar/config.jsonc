@@ -1,0 +1,184 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top",    // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 32,      // Waybar height (to be removed for auto height)
+    "width": null,     // Waybar width
+    "spacing": 4,      // Gaps between modules (4px)
+
+    // Order of modules
+    "modules-left": [
+        "sway/workspaces", // Sway workspaces
+        "sway/mode",       // Show mode header
+        "sway/scratchpad",
+        "sway/window"      // Current window title
+    ],
+
+    "modules-center": [
+        // Privacy requires pipewire, won't until after pulseaudio is abadoned
+        "privacy"
+    ],
+
+    "modules-right": [
+        "disk",
+        "memory",
+        "cpu",
+        "temperature",
+        "battery",
+        "network",
+        "pulseaudio",
+        "clock#utc", // UTC time
+        "clock",
+        "tray",
+    ],
+
+    // Modules configuration
+    "sway/workspaces": {
+        "persistent-workspaces": {
+          "1: Code": [],
+          "2: Office": [],
+          "3: Social": []
+        },
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{icon} {value}",
+        "format-icons": {
+            "1: Code": "",
+            "2: Office": "",
+            "3: Social": "",
+            "urgent": "",
+            "default": ""
+        }
+    },
+
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    "sway/scratchpad": {
+        "format": "{icon} {count} Scratchpad",
+        "show-empty": true,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+
+    "sway/window": {
+        "format": "{app_id}: {title}",
+        "max-length": 40,
+        "tooltip": true,
+        "all-outputs": true,
+        "icon": false
+    },
+
+    "disk": {
+        "interval": 30,
+        "format": " {specific_used:0.0f}/{specific_total:0.0f} GiB",
+        "path": "/",
+        "unit": "GiB"
+    },
+
+    "memory": {
+        "format": "󰍛 {used:0.0f}/{total:0.0f} GiB" 
+    },
+
+    "cpu": {
+        "format": " {usage}% {load:0.1f}",
+        "tooltip": false
+    },
+
+    "temperature": {
+        // "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp3_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": "󰈀 {ipaddr}/{cidr}",
+        "tooltip-format": "󰌘 {ifname} via {gwaddr}",
+        "format-linked": "󰌘 {ifname} (No IP)",
+        "format-disconnected": "⚠ Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "󰏶",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ""
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "{:%Y-%m-%d %H:%M:%S %Z}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "clock#utc": {
+        "interval": 1,
+        "timezone": "UTC",
+        "format": "{:%H:%M:%S UTC}",
+        "tooltip": false
+    },
+
+    "tray": {
+        "spacing": 10
+    },
+
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+}
