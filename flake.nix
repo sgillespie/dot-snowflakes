@@ -21,10 +21,14 @@
       systems = flake-utils.lib.defaultSystems;
 
       imports = [
+        # Flake parts modules
         treefmt-nix.flakeModule
         home-manager.flakeModules.home-manager
 
-        ./home-configurations/flake-module.nix
+        # System/host configs (snowflakes)
+        ./hosts/sean-archlinux/default.nix
+
+        # Local development tools
         ./per-system/lint.nix
         ./per-system/treefmt.nix
         ./per-system/dev-shell.nix
