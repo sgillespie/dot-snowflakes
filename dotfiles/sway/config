@@ -67,7 +67,7 @@ hide_edge_borders smart
 ### Output configuration
 #
 # Wallpaper
-output * bg ~/.config/i3/background.png fill
+output * bg ~/.config/sway/background.png fill
 
 #
 # Example configuration:
@@ -124,7 +124,7 @@ bindsym $mod+Shift+y kill
 
 # Start your launcher
 bindsym $mod+Shift+m exec $menu
-bindsym $mod+m exec rofi -show launcher -modes "launcher:~/.config/i3/launcher.sh"
+bindsym $mod+m exec rofi -show launcher -modes "launcher:~/.config/sway/launcher.sh"
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
