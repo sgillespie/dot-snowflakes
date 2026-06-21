@@ -15,4 +15,4 @@ alpm-pkglist:
 
 # installs/syncs packages in the ArchLinux pacman package list
 alpm-pkglist-apply:
-  pacman -S --needed - < hosts/sean-archlinux/pkglist.txt
+  sudo pacman -Sq --needed - < hosts/sean-archlinux/pkglist.txt
