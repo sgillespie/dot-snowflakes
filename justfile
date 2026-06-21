@@ -11,7 +11,7 @@ hm-build:
 
 # generates ArchLinux pacman package list
 alpm-pkglist:
-  pacman -Qqe > hosts/sean-archlinux/pkglist.txt
+  pacman -Qqen > hosts/sean-archlinux/pkglist.txt
 
 # installs/syncs packages in the ArchLinux pacman package list
 alpm-pkglist-apply:
