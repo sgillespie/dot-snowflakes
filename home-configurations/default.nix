@@ -9,6 +9,9 @@
       ".gnupg/gpg.conf".source = ../dotfiles/gnupg/gpg.conf;
       ".gnupg/scdaemon.conf".source = ../dotfiles/gnupg/scdaemon.conf;
     };
+
+    # Brave isn't in pacman official repositories, so install it from nixpkgs
+    packages = [ pkgs.brave ];
   };
 
   xdg.configFile = {
