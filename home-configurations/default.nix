@@ -1,4 +1,14 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) (with pkgs; [
+      claude-code.pname
+      slack.pname
+    ]);
+
   home = {
     username = "sgillespie";
     homeDirectory = "/home/sgillespie";
@@ -17,7 +27,11 @@
     # Brave isn't in pacman official repositories, so install it from nixpkgs
     packages = with pkgs; [
       brave
+      claude-code
       iamb
+      pinentry-rofi
+      rofi-pass
+      slack
     ];
   };
 

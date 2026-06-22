@@ -1,4 +1,5 @@
+bluetuith
+ghcup-hs-bin
 paru
-pinentry-rofi
 volantes-cursors-git
 zsh-theme-powerlevel10k-git
