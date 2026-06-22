@@ -29,6 +29,7 @@
     "opencode/opencode.jsonc".source = ../dotfiles/opencode/opencode.jsonc;
     "sway".source = ../dotfiles/sway;
     "tmux".source = ../dotfiles/tmux;
+    "rofi".source = ../dotfiles/rofi;
     "rofi-pass".source = ../dotfiles/rofi-pass;
     "waybar".source = ../dotfiles/waybar;
   };
