@@ -15,7 +15,10 @@
     };
 
     # Brave isn't in pacman official repositories, so install it from nixpkgs
-    packages = [ pkgs.brave ];
+    packages = with pkgs; [
+      brave
+      iamb
+    ];
   };
 
   xdg.configFile = {
