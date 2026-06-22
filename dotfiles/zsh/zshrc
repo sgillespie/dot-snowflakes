@@ -1,3 +1,5 @@
+bindkey -e
+
 ## Plugins
 #
 # Direnv
@@ -16,19 +18,39 @@ source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring
 
 ## History
 setopt histignorespace
+setopt sharehistory
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+
+## Key bindings
+bindkey -e # Emacs-style bindings
+# History substring search (up, down, C-p and C-n)
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down
 
 ## Defaults
 export BROWSER="brave"
 export EDITOR="nvim"
 
 ## Dircolors
-# TODO[sgillespie]
+LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
+export LS_COLORS
 
 ## Colored manuals
-# TODO[sgillespie]
+man() {
+  env \
+    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+    LESS_TERMCAP_md=$(printf "\e[1;31m") \
+    LESS_TERMCAP_me=$(printf "\e[0m") \
+    LESS_TERMCAP_se=$(printf "\e[0m") \
+    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+    LESS_TERMCAP_ue=$(printf "\e[0m") \
+    LESS_TERMCAP_us=$(printf "\e[1;32m") \
+    man "$@"
+}
 
 ## Completion
 zmodload zsh/complist
@@ -50,14 +72,20 @@ zstyle ':completion:*:*:kill:*' menu yes select
 # TODO[sgillespie]: Do I still need this?
 zstyle ':completion:*' menu select
 
-## Window title
-# TODO[sgillespie]
-
 ## Prompt
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+## Misc options
+setopt correct
+setopt correctall
+setopt extendedglob
+setopt globdots
+setopt interactivecomments
+setopt noclobber
+setopt rcquotes
 
 ## GPG
 export SSH_AGENT_PID=""
