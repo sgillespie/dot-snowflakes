@@ -22,6 +22,8 @@
 
       # Shell
       ".zshrc".source = ../dotfiles/zsh/zshrc;
+      ".zprofile".source = ../dotfiles/zsh/zprofile;
+      ".profile".source = ../dotfiles/zsh/profile;
     };
 
     # Brave isn't in pacman official repositories, so install it from nixpkgs
