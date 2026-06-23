@@ -15,6 +15,7 @@ fi
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /usr/share/doc/pkgfile/command-not-found.zsh
 
 ## History
 setopt histignorespace
@@ -79,8 +80,6 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ## Misc options
-setopt correct
-setopt correctall
 setopt extendedglob
 setopt globdots
 setopt interactivecomments
