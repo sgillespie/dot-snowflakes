@@ -6,11 +6,12 @@
 [![Built with Nix](https://img.shields.io/badge/Built_With-Nix-5277C3.svg?logo=nixos&labelColor=73C3D5)](https://www.nixos.org/)
 [![License: MIT](https://img.shields.io/github/license/sgillespie/dot-snowflakes)](LICENSE)
 
-This project contains my home and host configurations. It is built as a Nix flake-parts
-project, organized into the following directories:
+This project contains my home and host configurations. It is built as a Nix
+[flake-parts](https://flake.parts) project, organized into the following directories:
 
  * `dotfiles/`: User-specific configuration files intended to be copied to $HOME
- * `home-configurations/`: Home Manager configurations
+ * `home-configurations/`: [Home Manager](https://github.com/nix-community/home-manager)
+   configurations
  * `hosts/`: Top-level configuration for each host
  * `per-system`: Development tools for working in this project
 
@@ -19,7 +20,7 @@ In addition, there are [Just](https://just.systems) recipes for most tasks.
 ## Features
 
  * **Based on flake-parts**: Extensible, composable flake modules
- * **Multi-OS**: Targets a mixture of NixOS and ArchLinux hosts
+ * **Multi-OS**: Targets a mixture of NixOS and Arch Linux hosts
  * **Lightweight configuration management**: Separate per-OS system and home configurations
    * NixOS: NixOS modules + Home Manager
    * Arch Linux: Pacman package lists + Etckeeper + Home Manager
@@ -44,7 +45,7 @@ Otherwise, enter the development shell:
 
 To view available Just recipes, run the default recipe:
 
-    > just
+    just
 
     Available recipes:
         [home-manager]
@@ -52,8 +53,8 @@ To view available Just recipes, run the default recipe:
         hm-build             # builds home-manager configurations
 
         [pacman]
-        pacman-pkglist       # generates ArchLinux pacman package list
-        pacman-pkglist-apply # installs/syncs packages in the ArchLinux pacman package list
+        pacman-pkglist       # generates Arch Linux pacman package list
+        pacman-pkglist-apply # installs/syncs packages in the Arch Linux pacman package list
 
         [gpg-agent]
         gpgagent-reload      # reloads the gpg-agent config
@@ -69,9 +70,9 @@ If this updates `gpg-agent.conf`, you might also want to reload gpg-agent:
 
     just gpgagent-reload
 
-### ArchLinux Package Lists
+### Arch Linux Package Lists
 
-After installing packages in [ArchLinux](https://archlinux.org) with `pacman`, be sure 
+After installing packages in [Arch Linux](https://archlinux.org) with `pacman`, be sure 
 to update the package list:
 
     just pacman-pkglist
@@ -98,6 +99,6 @@ This project was either built on, or greatly inspired by the following awesome p
  * [Nix](https://nixos.org)
  * [Home Manager](https://github.com/nix-community/home-manager)
  * [Flake Parts](https://flake.parts)
- * [ArchLinux](https://archlinux.org)
+ * [Arch Linux](https://archlinux.org)
  * [Just](https://just.systems)
  * [Jörg Thalheim's dotfiles](https://github.com/Mic92/dotfiles)
