@@ -59,12 +59,15 @@ To view available Just recipes, run the default recipe:
         hm-build             # builds home-manager configurations
 
         [pacman]
-        pacman-pkglist       # generates Arch Linux pacman package list
-        pacman-pkglist-apply # installs/syncs packages in the Arch Linux pacman package list
+        pacman-pkglist       # generates ArchLinux pacman package list
+        pacman-pkglist-apply # installs/syncs packages in the ArchLinux pacman package list
 
         [gpg-agent]
         gpgagent-reload      # reloads the gpg-agent config
         gpgagent-updatetty   # refresh the gpg-agent pinentry startuptty
+
+        [submodules]
+        etc-update           # syncs the `etc/` submodule
 
 ### Home Manager Configurations
 
@@ -92,6 +95,46 @@ Install the packages in `pkglist.txt`:
 
 Note this will only install the native packages. The foreign package list is only for
 review.
+
+### Etckeeper Configuration Files
+
+System configuration files for non-NixOS hosts are managed by [etckeeper](https://etckeeper.branchable.com/)
+in the `etc/` submodule.
+
+This uses a whitelist `.gitignore` strategy--only files explicitly allowed are tracked 
+by git. This avoids committing sensitive files and only tracks files that have
+actually changed from defaults.
+
+Do decide whether to add a file, consider:
+
+ * If it has changed from the default
+ * If you would want to reproduce it on a fresh install
+
+#### Workflow
+
+Initialize/update the submodule:
+
+    just et-update
+
+Add a file to etckeeper:
+
+ 1. Add the file and its parent directories to `/etc/gitignore`:
+        
+        !dir/        # Add the parent directory, if necessary
+        !dir/subdir/ # And subdirectories
+        !dir/file    # Add the file
+        !dir/**      # Or a wildcard
+
+ 2. Stage it, commit and push
+
+        sudo gitkeeper vcs add /etc/dir/file
+        sudo gitkeeper commit
+        sudo gitkeeper vcs push
+
+To review changes at any time:
+
+    sudo gitkeeper vcs status
+    sudo gitkeeper vcs diff
 
 ## License
 
