@@ -13,6 +13,7 @@ This project contains my home and host configurations. It is built as a Nix
  * `home-configurations/`: [Home Manager](https://github.com/nix-community/home-manager)
    configurations
  * `hosts/`: Top-level configuration for each host
+ * `etc/`: `/etc` configuration files for non-Nix hosts, tracked by [etckeeper](https://etckeeper.branchable.com)
  * `per-system`: Development tools for working in this project
 
 In addition, there are [Just](https://just.systems) recipes for most tasks.
@@ -26,12 +27,16 @@ In addition, there are [Just](https://just.systems) recipes for most tasks.
    * Arch Linux: Pacman package lists + Etckeeper + Home Manager
  * **Task runner**: `just` recipes included for common operations
 
-## Setup
+## Quickstart
 
 In order to use this project, you will need:
 
  * [Nix](https://nixos.org/download/)
  * [direnv](https://direnv.net/) (optional)
+
+Initialize the `dot-snowflakes-etc` submodule:
+
+    git submodule update --init
 
 If using direnv, approve and load the environment:
 
