@@ -1,5 +1,7 @@
 {
+  config,
   lib,
+  nixgl,
   pkgs,
   ...
 }: {
@@ -8,6 +10,11 @@
       claude-code.pname
       slack.pname
     ]);
+
+  targets.genericLinux.nixGL = {
+    packages = nixgl;
+    defaultWrapper = "mesa";
+  };
 
   home = {
     username = "sgillespie";
@@ -28,12 +35,13 @@
 
     # Brave isn't in pacman official repositories, so install it from nixpkgs
     packages = with pkgs; [
-      brave
       claude-code
       iamb
       pinentry-rofi
       rofi-pass
-      slack
+
+      (config.lib.nixGL.wrap brave)
+      (config.lib.nixGL.wrap slack)
     ];
   };
 
