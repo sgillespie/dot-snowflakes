@@ -31,3 +31,8 @@ gpgagent-reload:
 [group('gpg-agent')]
 gpgagent-updatetty:
   gpg-connect-agent updatestartuptty /bye
+
+# syncs the `etc/` submodule
+[group('submodules')]
+etc-update:
+  git submodule update --init --remote --merge

@@ -34,9 +34,6 @@ In order to use this project, you will need:
  * [Nix](https://nixos.org/download/)
  * [direnv](https://direnv.net/) (optional)
 
-Initialize the `dot-snowflakes-etc` submodule:
-
-    git submodule update --init
 
 If using direnv, approve and load the environment:
 
@@ -45,6 +42,10 @@ If using direnv, approve and load the environment:
 Otherwise, enter the development shell:
 
     nix develop .
+
+Initialize the `etc/` submodule:
+
+    just etc-update
 
 ## Usage
 
