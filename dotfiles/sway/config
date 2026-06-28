@@ -60,8 +60,11 @@ smart_gaps off
 # Add a thin border around the activated window
 default_border pixel 1
 default_floating_border pixel 1
-# Make tabbed layout clean
-hide_edge_borders smart
+# Make tabbed layout clean:
+#
+#  * smart: Hide borders if workspace has 1 child
+#  * i3-compat: Hide window title if container has 1 child
+hide_edge_borders --i3 smart
 
 
 ### Output configuration
