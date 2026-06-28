@@ -50,7 +50,7 @@ etc-diff:
 # commit etckeeper changes
 [group('etc')]
 etc-commit:
-  sudo etckeeper vcs commit
+  sudo --preserve-env=EDITOR etckeeper vcs commit --allow-empty
 
 # show customized files in `/etc`
 [group('etc')]
