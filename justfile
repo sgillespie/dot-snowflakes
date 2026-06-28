@@ -37,14 +37,35 @@ gpgagent-updatetty:
 etc-update:
   git submodule update --init --remote --merge
 
+# show etckeeper git status
 [group('etc')]
 etc-status:
   sudo etckeeper vcs status
 
+# show etckeeper git diff
 [group('etc')]
 etc-diff:
   sudo etckeeper vcs diff
 
+# commit etckeeper changes
 [group('etc')]
 etc-commit:
   sudo etckeeper vcs commit
+
+# show customized files in `/etc`
+[group('etc')]
+etc-review:
+  @echo "Backup:"
+  @sudo pacman -Qkk 2>&1 \
+    | awk 'BEGIN { FS=": " }; /^backup file/ { print $3 }' \
+    | awk '{printf "  %s\n", $1}' \
+    | sort \
+    | uniq
+
+  @echo "Packages:"
+  @sudo pacman -Qkk 2>/dev/null \
+    | awk 'BEGIN { FS="[:,]" }; !/^backup file/ && !/0 altered files$/{ printf "  %s:%s\n", $1, $3}'
+
+  @echo "Unexpected:"
+  @sudo pacman -Qkk 2>&1 \
+    | awk '!/^backup file/ && !/altered file[s]?$/ { printf "  %s\n", $0 }'
