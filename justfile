@@ -33,6 +33,18 @@ gpgagent-updatetty:
   gpg-connect-agent updatestartuptty /bye
 
 # syncs the `etc/` submodule
-[group('submodules')]
+[group('etc')]
 etc-update:
   git submodule update --init --remote --merge
+
+[group('etc')]
+etc-status:
+  sudo etckeeper vcs status
+
+[group('etc')]
+etc-diff:
+  sudo etckeeper vcs diff
+
+[group('etc')]
+etc-commit:
+  sudo etckeeper vcs commit
