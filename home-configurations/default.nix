@@ -31,6 +31,10 @@
       ".zshrc".source = ../dotfiles/zsh/zshrc;
       ".zprofile".source = ../dotfiles/zsh/zprofile;
       ".profile".source = ../dotfiles/zsh/profile;
+
+      # AI-assisted coding agents
+      ".claude/CLAUDE.md".source = ../dotfiles/agents/AGENTS.md;
+      ".config/opencode/AGENTS.md".source = ../dotfiles/agents/AGENTS.md;
     };
 
     # Brave isn't in pacman official repositories, so install it from nixpkgs
