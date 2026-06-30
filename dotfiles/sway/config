@@ -51,7 +51,7 @@ client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
 
 # Font for window titles.
-font pango:Atkinson Hyperlegible 11
+font pango:Atkinson Hyperlegible 13
 
 # Create a gap between windows
 gaps outer 0

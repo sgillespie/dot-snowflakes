@@ -1,5 +1,5 @@
 configuration {
-  font: "Atkinson Hyperlegible 13";
+  font: "Atkinson Hyperlegible 15";
 
   timeout {
       action: "kb-cancel";

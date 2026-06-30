@@ -1,1 +1,1 @@
-vim.o.guifont = "SauceCodePro NFM Medium:h12"
+vim.o.guifont = "SauceCodePro NFM Medium:h13"
