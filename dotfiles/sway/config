@@ -279,7 +279,9 @@ for_window [app_id="kitty_float"] {
 #
 # Screenshot a region to the clipboard
 bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy
-
+bindsym $mod+Shift+p \
+  exec mkdir -p "$HOME/documents/screenshots" \
+  && grim -g "$(slurp)" "$HOME/documents/screenshots/$(date +%4Y-%m-%d-%H:%M:%S).png"
 # Clipboard history picker
 bindsym $mod+Shift+v exec cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy
 
