@@ -1,5 +1,7 @@
 bluetuith
 ghcup-hs-bin
+neovim-remote
 paru
+slack-desktop-wayland
 volantes-cursors-git
 zsh-theme-powerlevel10k-git
