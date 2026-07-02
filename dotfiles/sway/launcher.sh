@@ -7,13 +7,13 @@ export ROFI_PASS_CLIPBOARD_BACKEND=wl-clipboard
 declare -A cmd
 cmd[Bluetuith]='kitty --app-id kitty_float bluetuith'
 cmd[Brave]='brave --profile-directory=Default'
-cmd["Brave (work)"]='brave --profile-directory=IOG'
-cmd[Discord]='Discord'
+cmd["Brave (work)"]='brave --profile-directory IOG'
+cmd[Discord]='discord'
 cmd[nmtui]="kitty --app-id kitty_float nmtui"
 cmd[Pass]='rofi-pass'
 cmd[Pulsemixer]='kitty --app-id kitty_float pulsemixer'
 cmd[Slack]='slack'
-cmd[Spotify]='spotify'
+cmd[Spotify]='spotify-launcher'
 cmd[Thunderbird]='thunderbird'
 cmd[Neovide]='neovide'
 cmd[Telegram]='Telegram'
