@@ -1,9 +1,11 @@
 adobe-source-code-pro-fonts
 amd-ucode
+apparmor
 arch-install-scripts
 base
 base-devel
 bash-completion
+bat
 bind
 bluez
 bluez-utils
@@ -36,6 +38,7 @@ cosmic-text-editor
 cosmic-wallpapers
 cosmic-workspaces
 cryptsetup
+devtools
 dex
 direnv
 discord
@@ -44,6 +47,7 @@ e2fsprogs
 etckeeper
 evince
 expac
+fastfetch
 gdu
 ghc
 git
@@ -70,11 +74,14 @@ man-db
 man-pages
 materia-gtk-theme
 mesa
+namcap
 neovide
 neovim
 networkmanager
 nix
 noto-fonts-emoji
+npm
+nvchecker
 opencode
 openssh
 otf-atkinson-hyperlegible
@@ -88,6 +95,9 @@ perl-file-mimeinfo
 pgcli
 pipewire-jack
 pkgfile
+plymouth
+podman
+podman-compose
 postgresql
 postgresql-libs
 postgresql-old-upgrade
@@ -101,6 +111,7 @@ rtkit
 slurp
 spotify-launcher
 ssh-audit
+starship
 sudo
 sway
 swaybg
