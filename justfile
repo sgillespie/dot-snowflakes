@@ -3,13 +3,13 @@ _default:
 
 # applies home-manager configurations
 [group('home-manager')]
-hm-apply:
-  home-manager --flake . switch
+hm-apply *ARGS:
+  home-manager --flake . switch {{ARGS}}
 
 # builds home-manager configurations
 [group('home-manager')]
-hm-build:
-  home-manager --flake . build
+hm-build *ARGS:
+  home-manager --flake . build {{ARGS}}
 
 # generates ArchLinux pacman package list
 [group('pacman')]

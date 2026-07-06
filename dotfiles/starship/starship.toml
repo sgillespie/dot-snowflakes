@@ -1,0 +1,96 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true     # Insert line between prompts
+scan_timeout = 30      # Scan file timeout in milliseconds
+command_timeout = 500  # Timeout for commands run by starship in milliseconds
+palette = 'default'    # Named colors are defined in the palettes table below
+
+# Line-1 right closer: '─┐' (corner) is active; swap to '─┤' (post) to try the terminator look.
+format = """
+[┌─](frame) \
+$os$username$hostname\
+$directory\
+$git_branch$git_status\
+$status$cmd_duration\
+$time \
+[─┐](frame)
+[└─](frame) $character \
+"""
+
+[character]
+success_symbol = '[➤](prompt)'
+error_symbol = '[➤](prompt_error)'
+
+[os]
+disabled = false
+format = '[$symbol]($style) '
+style = 'os'
+
+[os.symbols]
+Arch = '󰣇'
+Linux = '󰌽'
+Macos = '󰀵'
+
+[username]
+show_always = true
+format = '[$user]($style)@'
+style_user = 'user'
+style_root = 'root'
+
+[hostname]
+ssh_only = false
+format = '[$hostname]($style)'
+style = 'host'
+
+[directory]
+style = 'directory'
+format = '[ ❯ ](separator)[$read_only]($read_only_style)[$path]($style)'
+truncation_length = 3
+truncate_to_repo = false
+truncation_symbol = '…/'
+read_only = '󰌾 '
+read_only_style = 'read_only'
+
+[git_branch]
+format = '[ ❯ ](separator)[git:$branch]($style)'
+symbol = ''
+style = 'git'
+
+[git_status]
+format = '([ $all_status$ahead_behind]($style))'
+style = 'git_dirty'
+
+[status]
+disabled = false
+format = '[ ❯ ](separator)$symbol'
+success_symbol = '[✔]()'
+symbol = '[✘](error)'
+
+[cmd_duration]
+min_time = 0
+format = '[ \($duration\)]($style)'
+style = 'duration'
+
+[time]
+disabled = false
+format = '[ ❯ ](separator)[$time]($style)'
+time_format = '%H:%M'
+style = 'time'
+
+[palettes.default]
+frame        = 'bright-black'  # box corners/connectors
+separator    = 'bright-black'  # `❯` between modules
+os           = 'bright-white'  # OS icon
+user         = 'yellow'        # username
+host         = 'yellow'        # hostname
+root         = 'bright-yellow' # username when root
+directory    = 'blue'          # current path
+read_only    = 'red'           # read-only path indicator
+git          = 'bright-black'  # git branch
+git_dirty    = 'white'         # git status flags
+error        = 'red'           # command failure
+duration     = 'white'         # command execution time
+time         = 'cyan'          # clock
+prompt       = 'cyan'          # prompt character
+prompt_error = 'red'           # prompt character after command failure
