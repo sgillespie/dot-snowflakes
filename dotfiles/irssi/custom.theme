@@ -1,0 +1,4 @@
+abstracts = {
+  # Make the statusbar text/background more readable.
+  sb_background = "%z2d4f67%w";
+};

@@ -35,6 +35,9 @@
       # AI-assisted coding agents
       ".claude/CLAUDE.md".source = ../dotfiles/agents/AGENTS.md;
       ".config/opencode/AGENTS.md".source = ../dotfiles/agents/AGENTS.md;
+
+      ".irssi/config".source = ../dotfiles/irssi/config;
+      ".irssi/custom.theme".source = ../dotfiles/irssi/custom.theme;
     };
 
     # Brave isn't in pacman official repositories, so install it from nixpkgs
@@ -62,6 +65,7 @@
     "tmux".source = ../dotfiles/tmux;
     "rofi".source = ../dotfiles/rofi;
     "rofi-pass".source = ../dotfiles/rofi-pass;
+    "starship.toml".source = ../dotfiles/starship/starship.toml;
     "waybar".source = ../dotfiles/waybar;
   };
 }
