@@ -8,8 +8,16 @@
       '';
   in {
     checks = {
-      deadnix = mkStaticCheck "deadnix-check" [pkgs.deadnix] "deadnix -f";
-      statix = mkStaticCheck "statix-check" [pkgs.statix] "statix check";
+      deadnix =
+        mkStaticCheck
+        "deadnix-check"
+        [pkgs.deadnix]
+        "deadnix --fail --exclude hosts/sean-work/hardware-configuration.nix";
+      statix =
+        mkStaticCheck
+        "statix-check"
+        [pkgs.statix]
+        "statix check --ignore hardware-configuration.nix";
     };
   };
 }

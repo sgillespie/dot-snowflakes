@@ -11,13 +11,13 @@ in {
     };
 
     homeConfigurations.sgillespie = withSystem system ({pkgs, ...}:
-        inputs.home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+      inputs.home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
-          modules = [
-            ../../home-configurations/default.nix
-            inputs.self.homeModules.overrides
-          ];
-        });
+        modules = [
+          ../../home-configurations/default.nix
+          inputs.self.homeModules.overrides
+        ];
+      });
   };
 }

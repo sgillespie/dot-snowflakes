@@ -1,6 +1,14 @@
 _default:
   @just --list --unsorted
 
+# runs local static analysis checks
+check:
+  nix flake check -v
+
+# reformats source files
+fmt:
+  nix fmt
+
 # builds a NixOS host configuration
 [group('nixos')]
 nixos-build host *ARGS:
