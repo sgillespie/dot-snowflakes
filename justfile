@@ -1,6 +1,16 @@
 _default:
   @just --list --unsorted
 
+# builds a NixOS host configuration
+[group('nixos')]
+nixos-build host *ARGS:
+  nix build .#nixosConfigurations.{{host}}.config.system.build.toplevel
+
+# builds a VM from a NixOS configuration host configuration
+[group('nixos')]
+nixos-vm host *ARGS:
+  nix build .#nixosConfigurations.{{host}}.config.system.build.vm
+
 # applies home-manager configurations
 [group('home-manager')]
 hm-apply *ARGS:

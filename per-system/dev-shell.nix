@@ -6,6 +6,7 @@ _parts: {
         deadnix
         home-manager
         just
+        nixos-install-tools
         statix
       ];
     };

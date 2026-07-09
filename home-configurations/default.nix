@@ -1,7 +1,5 @@
 {
-  config,
   lib,
-  nixgl,
   pkgs,
   ...
 }: {
@@ -10,11 +8,6 @@
       claude-code.pname
       slack.pname
     ]);
-
-  targets.genericLinux.nixGL = {
-    packages = nixgl;
-    defaultWrapper = "mesa";
-  };
 
   home = {
     username = "sgillespie";
@@ -47,8 +40,8 @@
       pinentry-rofi
       rofi-pass
 
-      (config.lib.nixGL.wrap brave)
-      (config.lib.nixGL.wrap slack)
+      brave
+      slack
     ];
   };
 

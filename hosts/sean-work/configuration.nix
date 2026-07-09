@@ -10,15 +10,25 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "sean-work";
-
-  # Configure network connections interactively with nmcli or nmtui.
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "sean-work";
+    networkmanager.enable = true;
+  };
 
   time.timeZone = "America/New_York";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+
+  home-manager = {
+    useUserPackages = true;
+
+    users.sgillespie = {
+      imports = [
+        ../../home-configurations/default.nix
+      ];
+    };
+  };
 
   users.users = {
     root.initialHashedPassword = "";
