@@ -5,6 +5,7 @@ servers = (
     port = "6697";
     use_tls = "yes";
     tls_verify = "yes";
+    autoconnect = "yes";
   }
 );
 
@@ -14,6 +15,9 @@ chatnets = {
     max_kicks = "1";
     max_msgs = "4";
     max_whois = "1";
+    sasl_mechanism = "PLAIN";
+    sasl_username = "sgillespie";
+    sasl_password = "$LIBERA_PASSWORD";
   };
 };
 
@@ -178,7 +182,7 @@ statusbar = {
 };
 settings = {
   core = {
-    real_name = "Unknown";
+    real_name = "Sean Gillespie";
     user_name = "sgillespie";
     nick = "sgillespie";
   };

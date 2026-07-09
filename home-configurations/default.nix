@@ -1,8 +1,22 @@
 {
+  config,
+  inputs,
   lib,
   pkgs,
   ...
 }: {
+  imports = [
+    inputs.sops-nix.homeManagerModules.sops
+
+    ../home-modules/default.nix
+  ];
+
+  sops = {
+    defaultSopsFile = ../secrets/default.yaml;
+    gnupg.home = "${config.home.homeDirectory}/.gnupg";
+    secrets."irssi.env" = {};
+  };
+
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) (with pkgs; [
       claude-code.pname
@@ -35,12 +49,12 @@
 
     # Brave isn't in pacman official repositories, so install it from nixpkgs
     packages = with pkgs; [
+      # These packages aren't in official repositories, so we install it from nixpkgs
+      brave
       claude-code
       iamb
       pinentry-rofi
       rofi-pass
-
-      brave
       slack
     ];
   };

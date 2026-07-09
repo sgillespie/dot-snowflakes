@@ -1,4 +1,4 @@
-_: {
+{ inputs, ...}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -20,6 +20,9 @@ _: {
 
   home-manager = {
     useUserPackages = true;
+    extraSpecialArgs = {
+      inherit inputs;
+    };
 
     users.sgillespie = {
       imports = [

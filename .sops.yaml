@@ -1,0 +1,16 @@
+keys:
+  - &sgillespie_temp_sub_1 91C72E117DF01124B6023EF8445F9AF5144A4DF8!
+  - &sgillespie_temp_sub_2 35B43EAA1688C1ECDB9157DB91CCFB0A30DE3847!
+  - &sgillespie_temp_sub_3 C457F736E3187E109CB4AE4E4B651F52CF45E62C!
+  - &sgillespie_temp_sub_4 468F65CB69D97A9C5609A94913C0538A12170811!
+  - &sgillespie_work AE9A1DFB1B8541A01AAC4672042E55F6FA3635DD
+
+creation_rules:
+  - path_regex: secrets/.*$
+    key_groups:
+      - pgp:
+          - *sgillespie_temp_sub_1
+          - *sgillespie_temp_sub_2
+          - *sgillespie_temp_sub_3
+          - *sgillespie_temp_sub_4
+          - *sgillespie_work

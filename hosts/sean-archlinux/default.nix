@@ -14,6 +14,11 @@ in {
       inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
+        # Pass inputs to home-manager config
+        extraSpecialArgs = {
+          inherit inputs; 
+        };
+
         modules = [
           ../../home-configurations/default.nix
           inputs.self.homeModules.overrides

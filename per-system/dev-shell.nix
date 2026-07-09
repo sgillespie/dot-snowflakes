@@ -7,6 +7,7 @@ _parts: {
         home-manager
         just
         nixos-install-tools
+        sops
         statix
       ];
     };
