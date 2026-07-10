@@ -17,6 +17,7 @@ Project-level `CLAUDE.md` or `AGENTS.md` files should override anything here.
    rather than imposing your own.
  * Add comments only when they add context.
  * Never read or print secrets (`.env`, credentials, keys) and don't commit them.
+ * For small, low-impact decisions, refer to [Bikeshedding](#bikeshedding) below.
 
 ## Workflow
 
@@ -43,6 +44,18 @@ Project-level `CLAUDE.md` or `AGENTS.md` files should override anything here.
    ("Great question", "Certainly").
  * Flag uncertainty plainly. If something failed or was skipped, say so--don't paper over
    it.
+
+## Bikeshedding
+
+Small, low-impact decisions (eg naming, layout, ordering, which of two equivalent
+approaches) are still important--they set conventions. So resolve them deliberately, up
+front, and treat them as settled once a convention exists.
+
+ * When a bikeshedding decision is raised, give a single suggestion with reasoning. Weigh
+   the options carefully and genuinely commit to a recommendation--don't hedge or list
+   alternatives as equals.
+ * One pass, not a dialogue. I'll accept it or go the other way; don't re-open,
+   re-argue, or ask which I prefer.
 
 ## Style
 
