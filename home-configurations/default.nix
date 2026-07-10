@@ -53,6 +53,7 @@
       brave
       claude-code
       iamb
+      neovim-remote
       pinentry-rofi
       rofi-pass
       slack
