@@ -1,45 +1,24 @@
 /*
- * base16 color scheme templates (from https://github.com/mnussbaum/base16-waybar)
+ * Adapted from base16 color scheme templates (from https://github.com/mnussbaum/base16-waybar)
  */
-/* base16-brewer by Timothée Poisot (http://github.com/tpoisot) */
-/* Uncomment to enable */
-/*
-@define-color base00 #0c0d0e;
-@define-color base01 #2e2f30;
-@define-color base02 #515253;
-@define-color base03 #737475;
-@define-color base04 #959697;
-@define-color base05 #b7b8b9;
-@define-color base06 #dadbdc;
-@define-color base07 #fcfdfe;
-@define-color base08 #e31a1c;
-@define-color base09 #e6550d;
-@define-color base0A #dca060;
-@define-color base0B #31a354;
-@define-color base0C #80b1d3;
-@define-color base0D #3182bd;
-@define-color base0E #756bb1;
-@define-color base0F #b15928;
-*/
 
-/* base16-embers by Jannik Siebert (https://github.com/janniks) */
-/* Comment out to disable */
-@define-color base00 #16130f;
-@define-color base01 #2c2620;
-@define-color base02 #433b32;
-@define-color base03 #5a5047;
-@define-color base04 #8a8075;
-@define-color base05 #a39a90;
-@define-color base06 #beb6ae;
-@define-color base07 #dbd6d1;
-@define-color base08 #826d57;
-@define-color base09 #828257;
-@define-color base0A #6d8257;
-@define-color base0B #57826d;
-@define-color base0C #576d82;
-@define-color base0D #6d5782;
-@define-color base0E #82576d;
-@define-color base0F #825757;
+/* base16-kanagawa by montor (https://github.com/montdor/base16-kanagawa-theme) */
+@define-color base00 #1F1F28;
+@define-color base01 #16161D;
+@define-color base02 #223249;
+@define-color base03 #54546D;
+@define-color base04 #727169;
+@define-color base05 #DCD7BA;
+@define-color base06 #C8C093;
+@define-color base07 #717C7C;
+@define-color base08 #C34043;
+@define-color base09 #FFA066;
+@define-color base0A #C0A36E;
+@define-color base0B #76946A;
+@define-color base0C #6A9589;
+@define-color base0D #7E9CD8;
+@define-color base0E #957FB8;
+@define-color base0F #D27E99;
 
 * {
     font-family: AtkynsonMono Nerd Font, SauceCodePro Nerd Font, sans-serif;
@@ -47,7 +26,7 @@
 }
 
 window#waybar {
-    background-color: #16161D;
+    background-color: @base01;
     color: @base05;
     transition-property: background-color;
     transition-duration: .5s;
@@ -99,7 +78,7 @@ button:hover {
     margin: 0;
     border-radius: 0;
     background-color: transparent;
-    color: @base03;
+    color: @base04;
 }
 
 #workspaces button:hover {
@@ -109,7 +88,7 @@ button:hover {
 
 #workspaces button.focused, #workspaces button.active {
     background-color: transparent;
-    color: @base07;
+    color: @base06;
 }
 
 #workspaces button.urgent {
@@ -143,8 +122,7 @@ button:hover {
 #language,
 #keyboard-state,
 #privacy-item,
-#custom-cap-left,
-#custom-cap-right {
+#custom-cap-left {
     padding: 2px 0;
     margin: 0;
     border-radius: 0;
@@ -152,16 +130,12 @@ button:hover {
     color: @base05;
 }
 
-/* Left cap is a filled arrow.
- * Right cap is the same glyph drawn transparent to fill the same amount of space */
-#custom-cap-left,
-#custom-cap-right {
-    color: @base03;
+/* Arch Linux logo tinted warm orange (base09). Replace the color below with base0D for
+ * the kanagawa warm blue */
+#custom-cap-left {
+    color: @base09;
+    /* color: @base0D; */   /* kanagawa cool blue */
     padding: 2px 4px;
-}
-
-#custom-cap-right {
-    color: transparent;
 }
 
 #window,
@@ -185,7 +159,7 @@ button:hover {
 }
 
 #clock.utc {
-    color: @base03;
+    color: @base04;
 }
 
 #custom-media {

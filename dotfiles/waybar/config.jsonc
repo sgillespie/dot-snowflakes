@@ -3,11 +3,11 @@
     "layer": "top",    // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "width": null,     // Waybar width
-    "spacing": 0,      // No gaps; the ` ❯ ` separators provide spacing
+    "spacing": 0,      // No gaps
 
     // Order of modules
     "modules-left": [
-        "custom/cap-left", // Prompt-frame opening cap: ┌─
+        "custom/cap-left", // Opening cap
         "sway/workspaces", // Sway workspaces
         "sway/mode",       // Show mode header
         "sway/scratchpad",
@@ -29,20 +29,12 @@
         "pulseaudio",
         "clock#utc", // UTC time
         "clock",
-        "tray",
-        "custom/cap-right" // Prompt-frame closing cap: ─┐
+        "tray"
     ],
 
-    // Static prompt-frame end caps (echo/once is the reliable static-label pattern)
+    // Opening cap
     "custom/cap-left": {
-        "exec": "echo ''",
-        "interval": "once",
-        "format": "{}",
-        "tooltip": false
-    },
-
-    "custom/cap-right": {
-        "exec": "echo '0000'",
+        "exec": "echo ''", // static label
         "interval": "once",
         "format": "{}",
         "tooltip": false
