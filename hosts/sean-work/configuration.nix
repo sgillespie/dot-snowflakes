@@ -1,4 +1,9 @@
-{inputs, ...}: {
+{
+  inputs, 
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -18,19 +23,6 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  home-manager = {
-    useUserPackages = true;
-    extraSpecialArgs = {
-      inherit inputs;
-    };
-
-    users.sgillespie = {
-      imports = [
-        ../../home-configurations/default.nix
-      ];
-    };
-  };
-
   users.users = {
     root.initialHashedPassword = "";
     sgillespie = {
@@ -38,6 +30,8 @@
       isNormalUser = true;
     };
   };
+
+  services.display-server.enable = true;
 
   # This option defines the first version of NixOS you have installed on this particular
   # machine, and is used to maintain compatibility with application data (e.g. databases)

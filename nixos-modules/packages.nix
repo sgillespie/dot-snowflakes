@@ -1,5 +1,18 @@
-{pkgs, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) (with pkgs; [
+      corefonts.pname 
+      discord.pname
+      spotify.pname
+    ]);
+
   environment.systemPackages = with pkgs; [
+    # Core utilities
     autoconf
     automake
     bashInteractive
@@ -42,7 +55,25 @@
     usbutils
     wget
     whois
+    xdg-utils
     zip
     zsh
+  ] ++ lib.optionals config.services.display-server.enable [
+    # GUI apps
+    cliphist
+    dex
+    discord
+    evince
+    grim
+    kanshi
+    kitty
+    lxappearance
+    mako
+    rofi
+    spotify
+    thunderbird
+    tuigreet
+    wdisplays
+    wl-clipboard
   ];
 }
