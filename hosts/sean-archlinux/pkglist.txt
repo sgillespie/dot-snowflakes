@@ -57,7 +57,6 @@ greetd-tuigreet
 grim
 hunspell-en_us
 inter-font
-irssi
 jq
 kanshi
 kitty
@@ -88,7 +87,9 @@ otf-atkinson-hyperlegible
 otf-atkinsonhyperlegiblemono-nerd
 otf-font-awesome
 pacman-contrib
+pacutils
 pass
+patchelf
 pavucontrol
 pcsc-tools
 perl-file-mimeinfo
@@ -134,6 +135,7 @@ wdisplays
 weechat
 wget
 which
+whois
 wl-clipboard
 xdg-desktop-portal
 xdg-desktop-portal-cosmic

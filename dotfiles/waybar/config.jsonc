@@ -3,10 +3,11 @@
     "layer": "top",    // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "width": null,     // Waybar width
-    "spacing": 4,      // Gaps between modules (4px)
+    "spacing": 0,      // No gaps; the ` ❯ ` separators provide spacing
 
     // Order of modules
     "modules-left": [
+        "custom/cap-left", // Prompt-frame opening cap: ┌─
         "sway/workspaces", // Sway workspaces
         "sway/mode",       // Show mode header
         "sway/scratchpad",
@@ -29,7 +30,23 @@
         "clock#utc", // UTC time
         "clock",
         "tray",
+        "custom/cap-right" // Prompt-frame closing cap: ─┐
     ],
+
+    // Static prompt-frame end caps (echo/once is the reliable static-label pattern)
+    "custom/cap-left": {
+        "exec": "echo ''",
+        "interval": "once",
+        "format": "{}",
+        "tooltip": false
+    },
+
+    "custom/cap-right": {
+        "exec": "echo '0000'",
+        "interval": "once",
+        "format": "{}",
+        "tooltip": false
+    },
 
     // Modules configuration
     "sway/workspaces": {
@@ -52,11 +69,11 @@
     },
 
     "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+        "format": "  <span style=\"italic\">{}</span>"
     },
 
     "sway/scratchpad": {
-        "format": "{icon} {count} Scratchpad",
+        "format": "  {icon} {count} Scratchpad",
         "show-empty": true,
         "format-icons": ["", ""],
         "tooltip": true,
@@ -64,7 +81,7 @@
     },
 
     "sway/window": {
-        "format": "{app_id}: {title}",
+        "format": "  {app_id}: {title}",
         "max-length": 40,
         "tooltip": true,
         "all-outputs": true,
@@ -79,11 +96,11 @@
     },
 
     "memory": {
-        "format": "󰍛 {used:0.0f}/{total:0.0f} GiB" 
+        "format": "  󰍛 {used:0.0f}/{total:0.0f} GiB" 
     },
 
     "cpu": {
-        "format": " {usage}% {load:0.1f}",
+        "format": "   {usage}% {load:0.1f}",
         "tooltip": false
     },
 
@@ -92,13 +109,13 @@
         "hwmon-path": "/sys/class/hwmon/hwmon3/temp3_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{icon} {temperatureC}°C",
+        "format": "  {icon} {temperatureC}°C",
         "format-icons": ["", "", ""]
     },
 
     "network": {
-        "format-wifi": " {essid}",
-        "format-ethernet": "󰈀 {ipaddr}/{cidr}",
+        "format-wifi": "   {essid}",
+        "format-ethernet": "  󰈀 {ipaddr}/{cidr}",
         "tooltip-format": "󰌘 {ifname} via {gwaddr}",
         "format-linked": "󰌘 {ifname} (No IP)",
         "format-disconnected": "⚠ Disconnected",
@@ -107,7 +124,7 @@
 
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{icon} {volume}% {format_source}",
+        "format": "  {icon} {volume}% {format_source}",
         "format-bluetooth": "{icon} {volume}% {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
@@ -143,7 +160,7 @@
 
     "clock": {
         "interval": 1,
-        "format": "{:%Y-%m-%d %H:%M:%S %Z}",
+        "format": "  {:%Y-%m-%d %H:%M:%S %Z}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -167,7 +184,7 @@
     "clock#utc": {
         "interval": 1,
         "timezone": "UTC",
-        "format": "{:%H:%M:%S UTC}",
+        "format": "  {:%H:%M:%S UTC}",
         "tooltip": false
     },
 
