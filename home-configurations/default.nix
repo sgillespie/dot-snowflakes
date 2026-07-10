@@ -70,6 +70,7 @@
     "nvim".source = ../dotfiles/nvim;
     "opencode/opencode.jsonc".source = ../dotfiles/opencode/opencode.jsonc;
     "sway".source = ../dotfiles/sway;
+    "swaylock".source = ../dotfiles/swaylock;
     "tmux".source = ../dotfiles/tmux;
     "rofi".source = ../dotfiles/rofi;
     "rofi-pass".source = ../dotfiles/rofi-pass;

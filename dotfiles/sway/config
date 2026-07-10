@@ -306,7 +306,7 @@ exec mako
 
 # Lock after idle timeout. Uses swaylock instead of DPMS `output * power off` to avoid 
 # nouveau driver issues. To restore DPMS, uncomment the line below
-exec swayidle -w timeout 600 'swaylock -f -c 000000'
+exec swayidle -w timeout 600 'swaylock -f'
 # Turn off displays after idle timeout
 # exec swayidle -w timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
 

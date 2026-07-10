@@ -1,0 +1,31 @@
+# swaylock configuration.
+# Colors are RRGGBB[AA] with no leading '#'. Palette: kanagawabones.
+
+ignore-empty-password
+
+# Uncomment me to keep the indicator drawn at all times
+# indicator
+indicator-radius=110
+indicator-thickness=7
+indicator-caps-lock
+
+font=Inter
+
+# Black background; ring / state colors (kanagawabones).
+color=000000
+inside-color=1f1f28cc
+inside-ver-color=1f1f28cc
+inside-wrong-color=1f1f28cc
+inside-clear-color=1f1f28cc
+ring-color=54546d
+ring-ver-color=7eb3c9
+ring-wrong-color=e46a78
+ring-clear-color=e5c283
+key-hl-color=98bc6d
+bs-hl-color=e46a78
+line-color=00000000
+separator-color=00000000
+text-color=ddd8bb
+text-ver-color=7eb3c9
+text-wrong-color=e46a78
+text-clear-color=e5c283
