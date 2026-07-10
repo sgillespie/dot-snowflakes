@@ -16,7 +16,7 @@ in {
 
         # Pass inputs to home-manager config
         extraSpecialArgs = {
-          inherit inputs; 
+          inherit inputs;
         };
 
         modules = [
