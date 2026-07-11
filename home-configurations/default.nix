@@ -53,7 +53,6 @@
       # These packages aren't in official repositories, so we install it from nixpkgs
       brave
       claude-code
-      comma
       iamb
       neovim-remote
       pinentry-rofi
@@ -61,6 +60,8 @@
       slack
     ];
   };
+
+  programs.nix-index-database.comma.enable = true;
 
   xdg.configFile = {
     "git".source = ../dotfiles/git;

@@ -19,7 +19,6 @@
     bashInteractive
     bat
     binutils
-    comma
     cryptsetup
     curl
     dig
@@ -80,7 +79,7 @@
   ];
 
   programs = {
-    comma.enable = true;
+    nix-index-database.comma.enable = true;
 
     zsh = {
       enable = true;
