@@ -7,6 +7,7 @@
 }: {
   imports = [
     inputs.sops-nix.homeManagerModules.sops
+    inputs.nix-index-database.homeModules.default
 
     ../home-modules/default.nix
   ];
@@ -52,6 +53,7 @@
       # These packages aren't in official repositories, so we install it from nixpkgs
       brave
       claude-code
+      comma
       iamb
       neovim-remote
       pinentry-rofi

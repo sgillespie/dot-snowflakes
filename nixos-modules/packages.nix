@@ -4,6 +4,7 @@
   pkgs,
   ...
 }: {
+
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) (with pkgs; [
       corefonts.pname 
@@ -18,6 +19,7 @@
     bashInteractive
     bat
     binutils
+    comma
     cryptsetup
     curl
     dig
@@ -76,4 +78,14 @@
     wdisplays
     wl-clipboard
   ];
+
+  programs = {
+    comma.enable = true;
+
+    zsh = {
+      enable = true;
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+    };
+  };
 }
