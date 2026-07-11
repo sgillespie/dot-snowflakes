@@ -85,6 +85,9 @@
       enable = true;
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
+      interactiveShellInit = ''
+        source "${pkgs.zsh-history-substring-search}/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
+      '';
     };
   };
 }
