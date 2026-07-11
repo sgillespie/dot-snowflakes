@@ -274,6 +274,17 @@ for_window [app_id="kitty_float"] {
     move position 20 ppt 40 px
 }
 
+for_window [class="Spotify"] {
+    floating enable
+    resize set width 50 ppt height 50 ppt
+    move position center
+}
+
+for_window [app_id="qemu"] {
+    floating enable
+    resize set width 1280 px height 800 px
+}
+
 #
 # Utilities:
 #
