@@ -18,11 +18,18 @@
     secrets."irssi.env" = {};
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) (with pkgs; [
-      claude-code.pname
-      slack.pname
-    ]);
+  nixpkgs.config = {
+    allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) (with pkgs; [
+        claude-code.pname
+        slack.pname
+        ventoy.pname
+      ]);
+
+      permittedInsecurePackages = with pkgs; [
+        ventoy.name
+      ];
+  };
 
   home = {
     username = "sgillespie";
@@ -57,11 +64,15 @@
       neovim-remote
       pinentry-rofi
       rofi-pass
+      ssh-to-age
       slack
+      ventoy-full
     ];
   };
 
-  programs.nix-index-database.comma.enable = true;
+  programs = {
+    nix-index-database.comma.enable = true;
+  };
 
   xdg.configFile = {
     "git".source = ../dotfiles/git;

@@ -56,6 +56,7 @@ with lib;
     };
 
     fonts = {
+      fontconfig.enable = true;
       fontDir.enable = true;  # This is required for extra fonts
 
       packages = with pkgs; [
@@ -68,6 +69,7 @@ with lib;
         merriweather
         merriweather-sans
         nerd-fonts._0xproto
+        nerd-fonts.atkynson-mono
         nerd-fonts.caskaydia-cove
         nerd-fonts.jetbrains-mono
         nerd-fonts.sauce-code-pro

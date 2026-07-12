@@ -19,6 +19,11 @@ nixos-build host *ARGS:
 nixos-vm host *ARGS:
   nix build .#nixosConfigurations.{{host}}.config.system.build.vm
 
+# builds a recover ISO image
+[group('nixos')]
+nixos-recovery *ARGS:
+  nix build {{ARGS}} .#nixosConfigurations.nixos-recovery.config.system.build.isoImage
+
 # applies home-manager configurations
 [group('home-manager')]
 hm-apply *ARGS:

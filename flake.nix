@@ -38,6 +38,7 @@
         # System/host configs (snowflakes)
         ./hosts/sean-archlinux/default.nix
         ./hosts/sean-work/default.nix
+        ./hosts/nixos-recovery/default.nix
 
         # Local development tools
         ./per-system/lint.nix
