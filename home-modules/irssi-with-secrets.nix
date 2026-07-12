@@ -13,7 +13,7 @@
     envsubst < "$HOME/.irssi/config" > "/run/user/$UID/irssi.conf"
 
     # Run irssi
-    ${pkgs.irssi}/bin/irssi --config "/run/user/$UID/irssi.conf"
+    exec ${pkgs.irssi}/bin/irssi --config "/run/user/$UID/irssi.conf"
   '';
 in {
   home.packages = [wrappedIrssi];
