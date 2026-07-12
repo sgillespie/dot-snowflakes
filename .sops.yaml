@@ -4,6 +4,7 @@ keys:
   - &sgillespie_temp_sub_3 C457F736E3187E109CB4AE4E4B651F52CF45E62C!
   - &sgillespie_temp_sub_4 468F65CB69D97A9C5609A94913C0538A12170811!
   - &sgillespie_work AE9A1DFB1B8541A01AAC4672042E55F6FA3635DD
+  - &sean-archlinux age1x4rthf0h693nzwre6e6l960ye3sk3sukag7yzregxmr6pxh7cvmqeglqav
 
 creation_rules:
   - path_regex: secrets/.*$
@@ -14,3 +15,5 @@ creation_rules:
           - *sgillespie_temp_sub_3
           - *sgillespie_temp_sub_4
           - *sgillespie_work
+        age:
+          - *sean-archlinux
