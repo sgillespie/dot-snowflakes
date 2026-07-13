@@ -28,7 +28,7 @@
 
     "/boot" = { device = "/dev/disk/by-uuid/BE79-5344";
       fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
+      options = [ "umask=0077" ];
     };
 
     "/home" = {
