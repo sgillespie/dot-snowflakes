@@ -12,6 +12,22 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    plymouth = {
+      enable = true;
+      theme = "solar";
+    };
+
+    # Enable "Silent boot"
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+
+    kernelParams = [
+      "quiet"
+      "rd.udev.log_level=3"
+      "rd.systemd.show_status=auto"
+    ];
+  };
 
   networking = {
     hostName = "sean-work";
@@ -23,11 +39,21 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
+  security.sudo = {
+    enable = true;
+    wheelNeedsPassword = false;
+  };
+
+  nix.settings = {
+    trusted-users = ["root" "@wheel"];
+  };
+
   users.users = {
-    root.initialHashedPassword = "";
     sgillespie = {
+      extraGroups = ["wheel" "hydra" "networkmanager" "video"];
       initialHashedPassword = "";
       isNormalUser = true;
+      shell = pkgs.zsh;
     };
   };
 
