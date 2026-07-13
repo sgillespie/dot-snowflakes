@@ -40,7 +40,7 @@
       device = "/dev/mapper/luks-blockcahin";
       fsType = "ext4";
     };
-  }
+  };
 
   swapDevices = [{
     device = "/dev/mapper/sean_work-swap";
