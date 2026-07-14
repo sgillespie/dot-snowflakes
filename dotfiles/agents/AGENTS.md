@@ -62,8 +62,9 @@ front, and treat them as settled once a convention exists.
  * When writing markdown:
    * Keep lines under 90 characters wide
    * Align table columns and headings
+   * Inline URL references as `[text](https://example.com)` rather than using
+     named reference links like `[text][ref]`
    * Prioritize human-reviewability
    * Keep the content concise:
      * 100 lines or less if possible
      * For complex topics, less than 200 lines
-
