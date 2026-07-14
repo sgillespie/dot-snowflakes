@@ -24,6 +24,7 @@
     curl
     dig
     dnsutils
+    envsubst
     file
     gcc
     gdu
@@ -81,6 +82,11 @@
     tuigreet
     wdisplays
     wl-clipboard
+
+    # Themes
+    glib # Provides gsettings
+    kanagawa-gtk-theme
+    kanagawa-icon-theme
   ];
 
   programs = {
