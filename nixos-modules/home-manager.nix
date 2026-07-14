@@ -1,4 +1,4 @@
-{inputs, ...}:{ 
+{inputs, ...}: {
   home-manager = {
     useUserPackages = true;
     extraSpecialArgs = {

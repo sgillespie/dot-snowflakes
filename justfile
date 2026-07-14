@@ -14,6 +14,11 @@ fmt:
 nixos-build host *ARGS:
   nix build .#nixosConfigurations.{{host}}.config.system.build.toplevel
 
+# activates the NixOS current host configuration
+[group('nixos')]
+nixos-switch *ARGS:
+  nixos-rebuild --sudo --flake . switch
+
 # builds a VM from a NixOS configuration host configuration
 [group('nixos')]
 nixos-vm host *ARGS:

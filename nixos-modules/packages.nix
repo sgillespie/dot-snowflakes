@@ -87,6 +87,9 @@
     glib # Provides gsettings
     kanagawa-gtk-theme
     kanagawa-icon-theme
+
+    # Virtualization
+    debootstrap
   ];
 
   programs = {

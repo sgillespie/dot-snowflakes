@@ -26,9 +26,9 @@
         ventoy.pname
       ]);
 
-      permittedInsecurePackages = with pkgs; [
-        ventoy.name
-      ];
+    permittedInsecurePackages = with pkgs; [
+      ventoy.name
+    ];
   };
 
   home = {

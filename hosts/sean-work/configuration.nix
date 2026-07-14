@@ -1,15 +1,10 @@
-{
-  inputs, 
-  lib,
-  pkgs,
-  ...
-}: {
+{...}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
-  boot = { 
+  boot = {
     splash.enable = true;
 
     loader = {
@@ -30,7 +25,6 @@
   };
 
   hardware.powerManagement.enable = true;
-
 
   # This option defines the first version of NixOS you have installed on this particular
   # machine, and is used to maintain compatibility with application data (e.g. databases)
