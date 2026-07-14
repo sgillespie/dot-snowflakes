@@ -34,7 +34,7 @@
 
     // Opening cap
     "custom/cap-left": {
-        "exec": "echo ''", // static label
+        "exec": "sh ~/.config/waybar/os-logo.sh",
         "interval": "once",
         "format": "{}",
         "tooltip": false

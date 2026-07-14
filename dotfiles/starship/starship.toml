@@ -31,6 +31,7 @@ style = 'os'
 Arch = '󰣇'
 Linux = '󰌽'
 Macos = '󰀵'
+NixOS = '󱄅'
 
 [username]
 show_always = true

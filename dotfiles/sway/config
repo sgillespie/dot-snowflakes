@@ -70,7 +70,7 @@ hide_edge_borders --i3 smart
 ### Output configuration
 #
 # Wallpaper
-output * bg ~/.config/sway/background.png fill
+exec_always sh ~/.config/sway/set-wallpaper.sh
 
 #
 # Example configuration:

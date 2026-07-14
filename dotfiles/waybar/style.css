@@ -130,11 +130,8 @@ button:hover {
     color: @base05;
 }
 
-/* Arch Linux logo tinted warm orange (base09). Replace the color below with base0D for
- * the kanagawa warm blue */
 #custom-cap-left {
-    color: @base09;
-    /* color: @base0D; */   /* kanagawa cool blue */
+    color: @base0D;
     padding: 2px 4px;
 }
 
