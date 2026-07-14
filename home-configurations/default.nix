@@ -13,8 +13,8 @@
   ];
 
   sops = {
+    age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
     defaultSopsFile = ../secrets/default.yaml;
-    gnupg.home = "${config.home.homeDirectory}/.gnupg";
     secrets."irssi.env" = {};
   };
 
