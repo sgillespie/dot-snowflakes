@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   ...
 }: {
@@ -26,7 +27,7 @@
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-      pinentryPackage = mkDefault pkgs.pinentry-rofi;
+      pinentryPackage = lib.mkDefault pkgs.pinentry-rofi;
     };
 
     ssh.startAgent = false;
