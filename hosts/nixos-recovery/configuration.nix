@@ -14,8 +14,8 @@
     splash.enable = true;
 
     loader = {
-      systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
     };
   };
 
@@ -24,17 +24,15 @@
     networkmanager.enable = true;
   };
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-
   services = {
     display-server.enable = true;
     sshd.enable = true;
-
-    logind = {
-      enable = true;
-      settings.Login.HandleLidSwitchExternalPower = "ignore";
-    };
+    udisks2.enable = true;
   };
+
+  hardware.powerManagement.enable = true;
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   # This option defines the first version of NixOS you have installed on this particular
   # machine, and is used to maintain compatibility with application data (e.g. databases)

@@ -5,5 +5,6 @@
     ./display-server.nix
     ./home-manager.nix
     ./packages.nix
+    ./power-management.nix
   ];
 }
