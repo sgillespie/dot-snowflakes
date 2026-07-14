@@ -14,6 +14,7 @@
 
   environment.systemPackages = with pkgs; [
     # Core utilities
+    age
     autoconf
     automake
     bashInteractive
@@ -22,22 +23,16 @@
     cryptsetup
     curl
     dig
-    direnv
     dnsutils
-    fastfetch
     file
     gcc
     gdu
     git
-    gh
     gnumake
     gnupg
     jq
-    just
     lsof
     magic-wormhole
-    nvchecker
-    opencode
     openssh
     openssl
     neovim
@@ -45,11 +40,8 @@
     parted
     pass
     pciutils
-    pgcli
     ripgrep
     rsync
-    ssh-audit
-    starship
     time
     tmux
     unzip
@@ -58,7 +50,19 @@
     whois
     xdg-utils
     zip
-    zsh
+
+    # Useful tools
+    direnv
+    gh
+    just
+    opencode
+    pgcli
+    ssh-audit
+
+    # Extras
+    fastfetch
+    nvchecker
+    starship
   ] ++ lib.optionals config.services.display-server.enable [
     # GUI apps
     cliphist
@@ -70,6 +74,7 @@
     kitty
     lxappearance
     mako
+    neovide
     rofi
     spotify
     thunderbird
@@ -79,6 +84,7 @@
   ];
 
   programs = {
+    browserpass.enable = true;
     nix-index-database.comma.enable = true;
 
     zsh = {
