@@ -9,24 +9,13 @@
     ./hardware-configuration.nix
   ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot = {
-    plymouth = {
-      enable = true;
-      theme = "solar";
+  boot = { 
+    splash.enable = true;
+
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
     };
-
-    # Enable "Silent boot"
-    consoleLogLevel = 3;
-    initrd.verbose = false;
-
-    kernelParams = [
-      "quiet"
-      "rd.udev.log_level=3"
-      "rd.systemd.show_status=auto"
-    ];
   };
 
   networking = {
@@ -34,35 +23,15 @@
     networkmanager.enable = true;
   };
 
-  time.timeZone = "America/New_York";
+  services = {
+    display-server.enable = true;
+    sshd.enable = true;
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  security.sudo = {
-    enable = true;
-    wheelNeedsPassword = false;
-  };
-
-  nix.settings = {
-    trusted-users = ["root" "@wheel"];
-  };
-
-  users.users = {
-    sgillespie = {
-      extraGroups = ["wheel" "hydra" "networkmanager" "video"];
-      initialHashedPassword = "";
-      isNormalUser = true;
-      shell = pkgs.zsh;
-
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBWAhzvN9VsD3TV8+aoNqUkaLLhuM5uFg6eUkic+FyHm (none)"
-      ];
+    logind = {
+      enable = true;
+      settings.Login.HandleLidSwitchExternalPower = "ignore";
     };
-
   };
-
-  services.display-server.enable = true;
 
   # This option defines the first version of NixOS you have installed on this particular
   # machine, and is used to maintain compatibility with application data (e.g. databases)

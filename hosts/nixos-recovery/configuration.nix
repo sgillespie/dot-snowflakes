@@ -10,56 +10,31 @@
     (modulesPath + "/installer/cd-dvd/installation-cd-base.nix")
   ];
 
-  # Use the systemd-boot EFI boot loader.
   boot = {
+    splash.enable = true;
+
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-
-    plymouth = {
-      enable = true;
-      theme = "solar";
-    };
-
-    # Enable "Silent boot"
-    consoleLogLevel = 3;
-    initrd.verbose = false;
-    kernelParams = [
-      "quiet"
-      "rd.udev.log_level=3"
-      "rd.systemd.show_status=auto"
-    ];
   };
 
   networking = {
     hostName = "nixos-recovery";
-  };
-
-  time.timeZone = "America/New_York";
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  security.sudo = {
-    enable = true;
-    wheelNeedsPassword = false;
-  };
-
-  nix.settings = {
-    trusted-users = ["root" "@wheel"];
+    networkmanager.enable = true;
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
-  users.users = {
-    sgillespie = {
-      extraGroups = ["wheel" "hydra" "networkmanager" "video"];
-      initialHashedPassword = "";
-      isNormalUser = true;
-      shell = pkgs.zsh;
+  services = {
+    display-server.enable = true;
+    sshd.enable = true;
+
+    logind = {
+      enable = true;
+      settings.Login.HandleLidSwitchExternalPower = "ignore";
     };
   };
-
-  services.display-server.enable = true;
 
   # This option defines the first version of NixOS you have installed on this particular
   # machine, and is used to maintain compatibility with application data (e.g. databases)

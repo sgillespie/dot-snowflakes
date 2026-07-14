@@ -1,5 +1,7 @@
 {
   imports = [
+    ./base.nix
+    ./boot-splash.nix
     ./display-server.nix
     ./home-manager.nix
     ./packages.nix
