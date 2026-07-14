@@ -53,6 +53,8 @@
 
       ".irssi/config".source = ../dotfiles/irssi/config;
       ".irssi/custom.theme".source = ../dotfiles/irssi/custom.theme;
+
+      "${config.xdg.binHome}/pinentry".source = "${pkgs.pinentry-rofi}/bin/pinentry-rofi";
     };
 
     # Brave isn't in pacman official repositories, so install it from nixpkgs
