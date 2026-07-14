@@ -22,6 +22,18 @@
     wheelNeedsPassword = false;
   };
 
+  programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+      pinentryPackage = mkDefault pkgs.pinentry-rofi;
+    };
+
+    ssh.startAgent = false;
+  };
+
+  services.pcscd.enable = true;
+
   nix.settings = {
     trusted-users = ["root" "@wheel"];
   };
