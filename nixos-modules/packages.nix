@@ -53,6 +53,7 @@
     zip
 
     # Useful tools
+    bindfs
     direnv
     gh
     just
@@ -70,6 +71,7 @@
     dex
     discord
     evince
+    firefox
     grim
     kanshi
     kitty
