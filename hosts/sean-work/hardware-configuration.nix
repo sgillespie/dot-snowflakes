@@ -11,14 +11,20 @@
       kernelModules = [ "dm-snapshot" ];
 
       luks.devices = {
-        "luks-root".device = "/dev/disk/by-uuid/caece4bc-e550-49ee-8b22-ffd63ae9b25b";
-        "luks-blockcahin".device = "/dev/disk/by-uuid/d96197d7-8aa3-40a8-af39-0568ee639875";
+        "luks-root" = {
+          crypttabExtraOpts = [ "fido2-device=auto" ];
+          device = "/dev/disk/by-uuid/caece4bc-e550-49ee-8b22-ffd63ae9b25b";
+        };
       };
     };
 
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
   };
+
+  environment.etc.crypttab.text = ''
+    luks-blockcahin /dev/disk/by-uuid/d96197d7-8aa3-40a8-af39-0568ee639875 /root/cryptsetup-keys.d/blockchain-crypt.key
+  '';
 
   fileSystems = {
     "/" = {
