@@ -1,6 +1,7 @@
 {
   imports = [
     ./base.nix
+    ./audio.nix
     ./boot-splash.nix
     ./display-server.nix
     ./home-manager.nix

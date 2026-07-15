@@ -90,6 +90,9 @@
 
     # Virtualization
     debootstrap
+  ] ++ lib.optionals config.hardware.audio.enable [
+    bluetuith
+    pulsemixer
   ];
 
   programs = {

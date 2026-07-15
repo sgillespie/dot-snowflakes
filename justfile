@@ -9,6 +9,10 @@ check:
 fmt:
   nix fmt
 
+# pulls $HOME/dev/docs from host
+docs host *ARGS:
+  rsync --archive --verbose {{ARGS}} {{host}}.home:"$HOME/dev/docs" $HOME/dev
+
 # builds a NixOS host configuration
 [group('nixos')]
 nixos-build host *ARGS:
