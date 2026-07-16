@@ -7,5 +7,6 @@
     ./home-manager.nix
     ./packages.nix
     ./power-management.nix
+    ./security.nix
   ];
 }

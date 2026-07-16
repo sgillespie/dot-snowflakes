@@ -18,11 +18,6 @@
     ];
   };
 
-  security.sudo = {
-    enable = true;
-    wheelNeedsPassword = false;
-  };
-
   programs = {
     gnupg.agent = {
       enable = true;
@@ -34,8 +29,4 @@
   };
 
   services.pcscd.enable = true;
-
-  nix.settings = {
-    trusted-users = ["root" "@wheel"];
-  };
 }

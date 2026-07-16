@@ -58,6 +58,8 @@
     gh
     just
     opencode
+    pam_u2f
+    pamtester
     pgcli
     ssh-audit
 
