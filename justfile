@@ -11,7 +11,14 @@ fmt:
 
 # pulls $HOME/dev/docs from host
 docs host *ARGS:
-  rsync --archive --verbose {{ARGS}} {{host}}.home:"$HOME/dev/docs" $HOME/dev
+  rsync \
+    --archive \
+    --update \
+    --itemize-changes \
+    --partial \
+    --progress \
+    --backup \
+    {{ARGS}} {{host}}.home:"$HOME/dev/docs" $HOME/dev
 
 # builds a NixOS host configuration
 [group('nixos')]
