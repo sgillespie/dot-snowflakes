@@ -1,0 +1,7 @@
+theme = Kanagawa Wave
+font-family = SauceCodePro Nerd Font
+font-style = Medium
+font-size = 13
+background-opacity = 0.9
+cursor-style = block
+shell-integration-features = no-cursor

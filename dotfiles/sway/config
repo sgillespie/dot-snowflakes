@@ -34,7 +34,7 @@ set $left h
 set $right l
 
 # Preferred terminal emulator
-set $term kitty
+set $term ghostty
 
 # Preferred application launcher
 set $menu rofi -show run
@@ -118,9 +118,9 @@ input type:keyboard {
 # Basics:
 #
 # Start a terminal
-set $terminal kitty bash -c 
-bindsym $mod+Return exec $term bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -s$USER@$HOSTNAME"
-bindsym $mod+Shift+Return exec kitty
+set $terminal ghostty -e bash -c
+bindsym $mod+Return exec $term -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -s$USER@$HOSTNAME"
+bindsym $mod+Shift+Return exec $term
 
 # Kill focused window
 bindsym $mod+Shift+y kill
@@ -268,7 +268,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ### Per-window configuration
-for_window [app_id="kitty_float"] {
+for_window [app_id="sway.float"] {
     floating enable
     resize set width 60 ppt height 50 ppt
     move position 20 ppt 40 px

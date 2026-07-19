@@ -5,13 +5,13 @@ export ROFI_PASS_CLIPBOARD_BACKEND=wl-clipboard
 # Curated rofi launcher; contains frequently-used apps
 
 declare -A cmd
-cmd[Bluetuith]='kitty --app-id kitty_float bluetuith'
+cmd[Bluetuith]='ghostty --class=sway.float -e bluetuith'
 cmd[Brave]='brave --profile-directory=Default'
 cmd["Brave (work)"]='brave --profile-directory IOG'
 cmd[Discord]='discord'
-cmd[nmtui]="kitty --app-id kitty_float nmtui"
+cmd[nmtui]='ghostty --class=sway.float -e nmtui'
 cmd[Pass]='rofi-pass'
-cmd[Pulsemixer]='kitty --app-id kitty_float pulsemixer'
+cmd[Pulsemixer]='ghostty --class=sway.float -e pulsemixer'
 cmd[Slack]='slack'
 cmd[Spotify]='spotify-launcher'
 cmd[Thunderbird]='thunderbird'

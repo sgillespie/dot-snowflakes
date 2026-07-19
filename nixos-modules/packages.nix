@@ -74,6 +74,7 @@
     discord
     evince
     firefox
+    ghostty
     grim
     kanshi
     kitty

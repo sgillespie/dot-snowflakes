@@ -78,6 +78,7 @@
 
   xdg.configFile = {
     "git".source = ../dotfiles/git;
+    "ghostty".source = ../dotfiles/ghostty;
     "iamb".source = ../dotfiles/iamb;
     "kanshi".source = ../dotfiles/kanshi;
     "kitty".source = ../dotfiles/kitty;
