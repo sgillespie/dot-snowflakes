@@ -19,13 +19,25 @@ with lib;
   };
 
   config = mkIf cfg.enable {
-    # 
     xdg.portal = {
       enable = true;
-      wlr.enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-wlr
+      ];
+
       config.sway.default = lib.mkForce [ "wlr" "gtk" ];
+      wlr = {
+        enable = true;
+        settings.screencast = {
+          chooser_type = "dmenu";
+          chooser_cmd = "rofi -dmenu";
+        };
+      };
     };
+
+    systemd.user.services.xdg-desktop-portal-wlr.path = with pkgs; [ rofi ];
 
     # 
     programs = {

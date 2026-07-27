@@ -82,16 +82,20 @@
     mako
     neovide
     rofi
+    slurp
     spotify
     thunderbird
     tuigreet
     wdisplays
     wl-clipboard
+    wlroots
 
     # Themes
     glib # Provides gsettings
     kanagawa-gtk-theme
     kanagawa-icon-theme
+    tela-icon-theme
+    volantes-cursors
 
     # Virtualization
     debootstrap
