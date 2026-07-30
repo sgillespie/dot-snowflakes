@@ -7,3 +7,5 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 if [[ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]]; then
   source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 fi
+
+[ -e "$HOME/.ghcup/bin" ] && export PATH="$HOME/.ghcup/bin:$PATH"
