@@ -4,7 +4,9 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  inherit (pkgs.hostPlatform) system;
+in {
   imports = [
     inputs.sops-nix.homeManagerModules.sops
     inputs.nix-index-database.homeModules.default
@@ -69,6 +71,8 @@
       ssh-to-age
       slack
       ventoy-full
+
+      inputs.tomato-slicer.packages.${system}."tomato-slicer:exe:tomato-slicer"
     ];
   };
 

@@ -8,6 +8,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     statix.url = "github:oppiliappan/statix";
+    tomato-slicer.url = "github:sgillespie/tomato-slicer";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
