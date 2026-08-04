@@ -21,7 +21,11 @@
   networking = {
     hostName = "sean-work";
     networkmanager.enable = true;
-    firewall.trustedInterfaces = ["ve-+"];
+    firewall.trustedInterfaces = [
+      "ve-+"
+      "incusbr0"
+    ];
+    nftables.enable = true;
   };
   
   systemd.network.enable = true;
@@ -36,6 +40,12 @@
     audio.enable = true;
     powerManagement.enable = true;
   };
+
+  virtualisation.incus = {
+    enable = true;
+    ui.enable = true;
+  };
+  users.users.sgillespie.extraGroups = [ "incus-admin" ];
 
   security.pam.u2f.enable = true;
   environment.etc."u2f_keys".source = ./u2f_keys;
