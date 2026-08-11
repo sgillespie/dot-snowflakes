@@ -55,6 +55,7 @@ fastfetch
 firefox
 gdu
 ghc
+ghostty
 git
 github-cli
 greetd
@@ -67,17 +68,21 @@ kanshi
 kitty
 libappindicator
 libnotify
+libreoffice-fresh
 linux
 linux-firmware
 logrotate
 lvm2
 lxappearance
+lxc
 magic-wormhole
 mako
 man-db
 man-pages
 materia-gtk-theme
 mesa
+mkosi
+mtools
 namcap
 neovide
 neovim
@@ -93,6 +98,7 @@ otf-atkinsonhyperlegiblemono-nerd
 otf-font-awesome
 pacman-contrib
 pacutils
+pandoc-cli
 pass
 patchelf
 pavucontrol
@@ -109,6 +115,9 @@ postgresql-libs
 postgresql-old-upgrade
 protobuf
 pulsemixer
+python-weasyprint
+qemu-user-static
+qemu-user-static-binfmt
 refind
 ripgrep
 rofi
@@ -123,6 +132,7 @@ sway
 swaybg
 swayidle
 swaylock
+systemd-ukify
 tela-circle-icon-theme-nord
 telegram-desktop
 texinfo
