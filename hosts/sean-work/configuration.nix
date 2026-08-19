@@ -28,12 +28,18 @@
     nftables.enable = true;
   };
   
-  systemd.network.enable = true;
-
   services = {
     display-server.enable = true;
     sshd.enable = true;
     udisks2.enable = true;
+
+    hydra = {
+      enable = true;
+      hydraURL = "http://localhost:3000";
+      notificationSender = "sgillespie@sean-work.home";
+      port = 3000;
+      useSubstitutes = true;
+    };
   };
 
   hardware = {
