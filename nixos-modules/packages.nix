@@ -10,6 +10,10 @@
       corefonts.pname 
       discord.pname
       spotify.pname
+
+      # discord-unwrapped is pulled in by 'discord', but does not have its own entry in
+      # nixpkgs
+      "discord-unwrapped"
     ]);
 
   environment.systemPackages = with pkgs; [
@@ -92,7 +96,7 @@
 
     # Themes
     glib # Provides gsettings
-    kanagawa-gtk-theme
+    orchis-theme
     kanagawa-icon-theme
     tela-icon-theme
     volantes-cursors

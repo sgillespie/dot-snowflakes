@@ -10,7 +10,7 @@ fmt:
   nix fmt
 
 gsettings-update:
-  gsettings set org.gnome.desktop.interface gtk-theme Kanagawa-B
+  gsettings set org.gnome.desktop.interface gtk-theme Orchis-Dark
   gsettings set org.gnome.desktop.interface font-name "Inter 12"
   gsettings set org.gnome.desktop.interface icon-theme "Tela-black"
   gsettings set org.gnome.desktop.interface cursor-theme "volantes_light_cursors"
@@ -25,6 +25,10 @@ docs host *ARGS:
     --progress \
     --backup \
     {{ARGS}} {{host}}.home:"$HOME/dev/docs" $HOME/dev
+
+# updates nix flake inputs
+nix-update *ARGS:
+  nix flake update {{ ARGS }}
 
 # builds a NixOS host configuration
 [group('nixos')]
