@@ -104,6 +104,7 @@ etc-review:
   @sudo pacman -Qkk 2>&1 \
     | awk 'BEGIN { FS=": " }; /^backup file/ { print $3 }' \
     | awk '{printf "  %s\n", $1}' \
+    | git -C etc check-ignore --no-index --stdin \
     | sort \
     | uniq
 
