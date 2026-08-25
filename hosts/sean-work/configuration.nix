@@ -27,11 +27,17 @@
     ];
     nftables.enable = true;
   };
-  
+
   services = {
     display-server.enable = true;
     sshd.enable = true;
     udisks2.enable = true;
+
+    protonmail-bridge = {
+      enable = true;
+      logLevel = "info";
+      path = [pkgs.pass];
+    };
 
     hydra = {
       enable = true;
