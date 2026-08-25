@@ -10,7 +10,7 @@ fmt:
   nix fmt
 
 gsettings-update:
-  gsettings set org.gnome.desktop.interface gtk-theme Orchis-Dark
+  gsettings set org.gnome.desktop.interface gtk-theme catppuccin-mocha-lavender-standard+rimless
   gsettings set org.gnome.desktop.interface font-name "Inter 12"
   gsettings set org.gnome.desktop.interface icon-theme "Tela-black"
   gsettings set org.gnome.desktop.interface cursor-theme "volantes_light_cursors"

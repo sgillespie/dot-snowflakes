@@ -96,7 +96,11 @@
 
     # Themes
     glib # Provides gsettings
-    orchis-theme
+    (catppuccin-gtk.override {
+      accents = [ "lavender" ];
+      tweaks = [ "rimless" ];
+      variant = "mocha";
+    })
     kanagawa-icon-theme
     tela-icon-theme
     volantes-cursors
