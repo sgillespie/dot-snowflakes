@@ -4,10 +4,9 @@
   pkgs,
   ...
 }: {
-
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) (with pkgs; [
-      corefonts.pname 
+      corefonts.pname
       discord.pname
       spotify.pname
 
@@ -16,101 +15,104 @@
       "discord-unwrapped"
     ]);
 
-  environment.systemPackages = with pkgs; [
-    # Core utilities
-    age
-    autoconf
-    automake
-    bashInteractive
-    bat
-    binutils
-    cryptsetup
-    curl
-    dig
-    dnsutils
-    envsubst
-    file
-    gcc
-    gdu
-    git
-    gnumake
-    gnupg
-    jq
-    lsof
-    magic-wormhole
-    openssh
-    openssl
-    neovim
-    patchelf
-    parted
-    pass
-    pciutils
-    ripgrep
-    rsync
-    time
-    tmux
-    unzip
-    usbutils
-    wget
-    whois
-    xdg-utils
-    zip
+  environment.systemPackages = with pkgs;
+    [
+      # Core utilities
+      age
+      autoconf
+      automake
+      bashInteractive
+      bat
+      binutils
+      cryptsetup
+      curl
+      dig
+      dnsutils
+      envsubst
+      file
+      gcc
+      gdu
+      git
+      gnumake
+      gnupg
+      jq
+      lsof
+      magic-wormhole
+      openssh
+      openssl
+      neovim
+      patchelf
+      parted
+      pass
+      pciutils
+      ripgrep
+      rsync
+      time
+      tmux
+      unzip
+      usbutils
+      wget
+      whois
+      xdg-utils
+      zip
 
-    # Useful tools
-    bindfs
-    direnv
-    gh
-    just
-    opencode
-    pam_u2f
-    pamtester
-    pgcli
-    ssh-audit
+      # Useful tools
+      bindfs
+      direnv
+      gh
+      just
+      opencode
+      pam_u2f
+      pamtester
+      pgcli
+      ssh-audit
 
-    # Extras
-    fastfetch
-    nvchecker
-    starship
-  ] ++ lib.optionals config.services.display-server.enable [
-    # GUI apps
-    cliphist
-    dex
-    discord
-    evince
-    firefox
-    ghostty
-    grim
-    kanshi
-    kitty
-    lxappearance
-    mako
-    neovide
-    rofi
-    slurp
-    spotify
-    thunderbird
-    tuigreet
-    wdisplays
-    wl-clipboard
-    wlroots
+      # Extras
+      fastfetch
+      nvchecker
+      starship
+    ]
+    ++ lib.optionals config.services.display-server.enable [
+      # GUI apps
+      cliphist
+      dex
+      discord
+      evince
+      firefox
+      ghostty
+      grim
+      kanshi
+      kitty
+      lxappearance
+      mako
+      neovide
+      rofi
+      slurp
+      spotify
+      thunderbird
+      tuigreet
+      wdisplays
+      wl-clipboard
+      wlroots
 
-    # Themes
-    glib # Provides gsettings
-    (catppuccin-gtk.override {
-      accents = [ "lavender" ];
-      tweaks = [ "rimless" ];
-      variant = "mocha";
-    })
-    kanagawa-icon-theme
-    tela-icon-theme
-    volantes-cursors
+      # Themes
+      glib # Provides gsettings
+      (catppuccin-gtk.override {
+        accents = ["lavender"];
+        tweaks = ["rimless"];
+        variant = "mocha";
+      })
+      kanagawa-icon-theme
+      tela-icon-theme
+      volantes-cursors
 
-    # Virtualization
-    debootstrap
-  ] ++ lib.optionals config.hardware.audio.enable [
-    bluetuith
-    pulsemixer
-  ];
+      # Virtualization
+      debootstrap
+    ]
+    ++ lib.optionals config.hardware.audio.enable [
+      bluetuith
+      pulsemixer
+    ];
 
   programs = {
     browserpass.enable = true;

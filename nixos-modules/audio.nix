@@ -3,8 +3,7 @@
   config,
   pkgs,
   ...
-}: 
-let
+}: let
   cfg = config.hardware.audio;
 in {
   options.hardware.audio.enable = lib.mkOption {

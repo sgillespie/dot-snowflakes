@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -57,7 +57,7 @@
     enable = true;
     ui.enable = true;
   };
-  users.users.sgillespie.extraGroups = [ "incus-admin" ];
+  users.users.sgillespie.extraGroups = ["incus-admin"];
 
   security.pam.u2f.enable = true;
   environment.etc."u2f_keys".source = ./u2f_keys;

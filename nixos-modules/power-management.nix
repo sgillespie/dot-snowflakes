@@ -3,9 +3,7 @@
   lib,
   pkgs,
   ...
-}: 
-
-let
+}: let
   cfg = config.hardware.powerManagement;
 in {
   options.hardware.powerManagement.enable = lib.mkOption {
