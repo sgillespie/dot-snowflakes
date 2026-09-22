@@ -26,7 +26,7 @@ local menu = "hyprlauncher"
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 hl.on("hyprland.start", function()
 	hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
-	hl.exec_cmd("waybar")
+	hl.exec_cmd("waybar -c $HOME/.config/hypr/config.jsonc -s $HOME/.config/hypr/style.css")
 end)
 
 -- [[ Environment Variables ]]
