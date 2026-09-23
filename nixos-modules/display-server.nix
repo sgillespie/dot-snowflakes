@@ -36,6 +36,12 @@ in
 
       #
       programs = {
+        hyprland = {
+          enable = true;
+          withUWSM = true;
+          xwayland.enable = true;
+        };
+
         sway = {
           enable = true;
           wrapperFeatures.gtk = true;
@@ -56,7 +62,12 @@ in
         useTextGreeter = true;
         settings = {
           default_session = {
-            command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway";
+            command = lib.concatStringsSep " " [
+              "${pkgs.tuigreet}/bin/tuigreet"
+              "--time"
+              "--sessions /run/current-system/sw/share/wayland-sessions"
+              "--cmd sway"
+            ];
             user = "greeter";
           };
         };
@@ -81,6 +92,7 @@ in
           nerd-fonts.jetbrains-mono
           nerd-fonts.sauce-code-pro
           source-code-pro
+          hyprlauncher
         ];
       };
     };

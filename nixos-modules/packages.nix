@@ -81,6 +81,7 @@
       firefox
       ghostty
       grim
+      hyprlauncher
       kanshi
       kitty
       lxappearance
