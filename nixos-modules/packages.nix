@@ -61,6 +61,7 @@
       direnv
       gh
       just
+      nil
       opencode
       pam_u2f
       pamtester
@@ -90,6 +91,7 @@
       rofi
       slurp
       spotify
+      telegram-desktop
       thunderbird
       tuigreet
       wdisplays
