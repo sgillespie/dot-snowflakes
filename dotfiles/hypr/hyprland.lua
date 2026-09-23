@@ -63,30 +63,23 @@ hl.config({
 		allow_tearing = false,
 
 		col = {
-			active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-			inactive_border = "rgba(595959aa)",
+			active_border = "rgba(C0A36Eff)",
+			inactive_border = "rgba(54546Dcc)",
 		},
 	},
 
 	decoration = {
-		rounding = 5,
-		rounding_power = 1,
+		rounding = 4,
 		-- Change transparency of focused and unfocused windows
 		active_opacity = 1.0,
 		inactive_opacity = 1.0,
 
 		shadow = {
-			enabled = true,
-			range = 4,
-			render_power = 3,
-			color = 0xee1a1a1a,
+			enabled = false,
 		},
 
 		blur = {
-			enabled = true,
-			size = 3,
-			passes = 1,
-			vibrancy = 0.1696,
+			enabled = false,
 		},
 	},
 
@@ -137,8 +130,8 @@ hl.config({
 -- [[ Misc ]]
 hl.config({
 	misc = {
-		force_default_wallpaper = -1, -- Set to 0 or 1 to disable the anime mascot wallpapers
-		disable_hyprland_logo = false, -- If true disables the random hyprland logo / anime girl background. :(
+		force_default_wallpaper = 0,
+		disable_hyprland_logo = true,
 	},
 })
 
@@ -193,7 +186,9 @@ hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 -- Manipulating windows
-hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(
+  mainMod .. " + F", 
+  hl.dsp.window.fullscreen({ action = "toggle", mode = "maximized" }))
 hl.bind(mainMod .. " + Y", hl.dsp.window.close())
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- Manipulating workflows (Dwindle)
@@ -212,8 +207,8 @@ for i = 1, 10 do
 end
 
 -- Special workspace (scratchpad)
-hl.bind(mainMod .. " + Minus", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + Minus", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(mainMod .. " + Minus", hl.dsp.workspace.toggle_special("0:Magic"))
+hl.bind(mainMod .. " + SHIFT + Minus", hl.dsp.window.move({ workspace = "special:0:Magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
@@ -256,6 +251,31 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 -- [[ Windows and Workspaces ]]
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
+
+hl.workspace_rule({
+  workspace = "1",
+  default_name = "1:Code",
+  persistent = true,
+})
+
+hl.workspace_rule({
+  workspace = "2",
+  default_name = "2:Office",
+  persistent = true,
+})
+
+hl.workspace_rule({
+  workspace = "3",
+  default_name = "3:Social",
+  persistent = true,
+})
+
+for i = 4, 10 do
+	hl.workspace_rule({
+		workspace = tostring(i),
+		default_name = i .. ":Extra",
+	})
+end
 
 -- Example window rules that are useful
 
