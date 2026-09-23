@@ -185,18 +185,45 @@ hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
+
 -- Manipulating windows
 hl.bind(
   mainMod .. " + F", 
   hl.dsp.window.fullscreen({ action = "toggle", mode = "maximized" }))
 hl.bind(mainMod .. " + Y", hl.dsp.window.close())
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
--- Manipulating workflows (Dwindle)
+
+-- Manipulating workspaces (Dwindle)
 hl.bind(mainMod .. " + Return", hl.dsp.layout("movetoroot active stable"))
 hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.layout("movetoroot active unstable"))
 hl.bind(mainMod .. " + R", hl.dsp.layout("rotatesplit"))
 hl.bind(mainMod .. " + S", hl.dsp.layout("swapsplit"))
-hl.bind(mainMod .. " + T", hl.dsp.layout("togglesplit")) -- dwindle only
+hl.bind(mainMod .. " + T", hl.dsp.layout("togglesplit"))
+
+-- Manipulating workspaces (Scrolling)
+hl.bind(mainMod .. " + C", hl.dsp.layout("colresize 1.0"))
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.layout("colresize 0.5"))
+-- Submap for everything else
+hl.bind(mainMod .. " + P", hl.dsp.submap("Tape"))
+hl.define_submap("Tape", function()
+	-- Scrolling the tape
+	hl.bind("H", hl.dsp.layout("focus l"), { repeating = true })
+	hl.bind("L", hl.dsp.layout("focus r"), { repeating = true })
+	hl.bind("SHIFT + H", hl.dsp.layout("swapcol l"))
+	hl.bind("SHIFT + L", hl.dsp.layout("swapcol r"))
+	hl.bind("M", hl.dsp.layout("move +col"), { repeating = true })
+	hl.bind("SHIFT + M", hl.dsp.layout("move -col"), { repeating = true })
+	-- Column width
+	hl.bind("E", hl.dsp.layout("fit expand"))
+	hl.bind("A", hl.dsp.layout("fit all"))
+	hl.bind("V", hl.dsp.layout("fit_into_view"))
+	-- Move windows between columns
+	hl.bind("P", hl.dsp.layout("promote"))
+	hl.bind("N", hl.dsp.layout("consume_or_expel next"))
+	hl.bind("B", hl.dsp.layout("consume_or_expel prev"))
+
+	hl.bind("escape", hl.dsp.submap("reset"))
+end)
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -262,6 +289,7 @@ hl.workspace_rule({
   workspace = "2",
   default_name = "2:Office",
   persistent = true,
+  layout = "scrolling",
 })
 
 hl.workspace_rule({
