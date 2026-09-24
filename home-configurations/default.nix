@@ -79,6 +79,7 @@ in {
           '';
       }))
       neovim-remote
+      nil
       pinentry-rofi
       rofi-pass
       ssh-to-age

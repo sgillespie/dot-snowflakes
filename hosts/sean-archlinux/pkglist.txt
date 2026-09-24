@@ -62,6 +62,15 @@ greetd
 greetd-tuigreet
 grim
 hunspell-en_us
+hyprcursor
+hypridle
+hyprland
+hyprlauncher
+hyprlock
+hyprpaper
+hyprpm
+hyprpolkitagent
+hyprshutdown
 inter-font
 jq
 kanshi
@@ -86,6 +95,7 @@ mtools
 namcap
 neovide
 neovim
+net-tools
 networkmanager
 nix
 noto-fonts-emoji
@@ -102,6 +112,7 @@ pandoc-cli
 pass
 patchelf
 pavucontrol
+pcmanfm
 pcsc-tools
 perl-file-mimeinfo
 pgcli
@@ -114,8 +125,8 @@ postgresql
 postgresql-libs
 postgresql-old-upgrade
 protobuf
+protonmail-bridge
 pulsemixer
-python-weasyprint
 qemu-user-static
 qemu-user-static-binfmt
 refind
@@ -127,6 +138,8 @@ slurp
 spotify-launcher
 ssh-audit
 starship
+strace
+stylua
 sudo
 sway
 swaybg
@@ -145,6 +158,7 @@ ttf-meslo-nerd
 ttf-sourcecodepro-nerd
 unzip
 usbutils
+uwsm
 vulkan-nouveau
 vulkan-tools
 waybar
@@ -157,6 +171,7 @@ wl-clipboard
 xdg-desktop-portal
 xdg-desktop-portal-cosmic
 xdg-desktop-portal-gtk
+xdg-desktop-portal-hyprland
 xdg-desktop-portal-wlr
 xdg-user-dirs
 xdg-utils

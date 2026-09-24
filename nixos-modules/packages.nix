@@ -61,7 +61,6 @@
       direnv
       gh
       just
-      nil
       opencode
       pam_u2f
       pamtester
