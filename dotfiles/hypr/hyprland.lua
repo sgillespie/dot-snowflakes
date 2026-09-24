@@ -127,6 +127,13 @@ hl.config({
 	},
 })
 
+-- Triple-buffer when needed
+hl.config({
+	render = {
+		new_render_scheduling = true,
+	},
+})
+
 -- [[ Misc ]]
 hl.config({
 	misc = {
@@ -204,7 +211,7 @@ hl.bind(mainMod .. " + T", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + C", hl.dsp.layout("colresize 1.0"))
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.layout("colresize 0.5"))
 -- Submap for everything else
-hl.bind(mainMod .. " + P", hl.dsp.submap("Tape"))
+hl.bind(mainMod .. " + SHIFT T", hl.dsp.submap("Tape"))
 hl.define_submap("Tape", function()
 	-- Scrolling the tape
 	hl.bind("H", hl.dsp.layout("focus l"), { repeating = true })

@@ -34,7 +34,14 @@ in
 
       systemd.user.services.xdg-desktop-portal-wlr.path = with pkgs; [rofi];
 
-      #
+      # Hardware video acceleration
+      hardware.graphics.extraPackages = with pkgs; [
+        intel-media-driver
+        vpl-gpu-rt
+      ];
+      environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
+
+      # WMs
       programs = {
         hyprland = {
           enable = true;
@@ -45,7 +52,6 @@ in
         sway = {
           enable = true;
           wrapperFeatures.gtk = true;
-          extraOptions = ["--unsupported-gpu"];
           extraSessionCommands = ''
             # General wayland environment variables
             export QT_QPA_PLATFORM="wayland;xcb"
