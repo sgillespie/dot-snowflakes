@@ -18,7 +18,7 @@ hl.monitor({
 -- Set programs that you use
 local terminal = "ghostty"
 local fileManager = "pcmanfm"
-local menu = "hyprlauncher"
+local menu = "rofi -show run"
 
 -- [[ Autostart ]]
 -- See https://wiki.hypr.land/Configuring/Basics/Autostart/
@@ -26,7 +26,10 @@ local menu = "hyprlauncher"
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 hl.on("hyprland.start", function()
 	hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
-	hl.exec_cmd("waybar -c $HOME/.config/hypr/config.jsonc -s $HOME/.config/hypr/style.css")
+	hl.exec_cmd(
+		"waybar -c $HOME/.config/hypr/config.jsonc -s $HOME/.config/hypr/style.css"
+	)
+	hl.exec_cmd("hyprpaper")
 end)
 
 -- [[ Environment Variables ]]
@@ -72,7 +75,7 @@ hl.config({
 		rounding = 4,
 		-- Change transparency of focused and unfocused windows
 		active_opacity = 1.0,
-		inactive_opacity = 1.0,
+		inactive_opacity = 0.95,
 
 		shadow = {
 			enabled = false,
@@ -144,6 +147,10 @@ hl.config({
 
 -- [[ Input ]]
 hl.config({
+	cursor = {
+		no_hardware_cursors = 1,
+	},
+
 	input = {
 		kb_layout = "us",
 		kb_variant = "",
@@ -178,6 +185,7 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 -- [ Basic Launchers ]
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Backspace", hl.dsp.exit())
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(menu))
 
@@ -195,8 +203,9 @@ hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 
 -- Manipulating windows
 hl.bind(
-  mainMod .. " + F", 
-  hl.dsp.window.fullscreen({ action = "toggle", mode = "maximized" }))
+	mainMod .. " + F",
+	hl.dsp.window.fullscreen({ action = "toggle", mode = "maximized" })
+)
 hl.bind(mainMod .. " + Y", hl.dsp.window.close())
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 
@@ -211,7 +220,7 @@ hl.bind(mainMod .. " + T", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + C", hl.dsp.layout("colresize 1.0"))
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.layout("colresize 0.5"))
 -- Submap for everything else
-hl.bind(mainMod .. " + SHIFT T", hl.dsp.submap("Tape"))
+hl.bind(mainMod .. " + SHIFT + T", hl.dsp.submap("Tape"))
 hl.define_submap("Tape", function()
 	-- Scrolling the tape
 	hl.bind("H", hl.dsp.layout("focus l"), { repeating = true })
@@ -242,7 +251,10 @@ end
 
 -- Special workspace (scratchpad)
 hl.bind(mainMod .. " + Minus", hl.dsp.workspace.toggle_special("0:Magic"))
-hl.bind(mainMod .. " + SHIFT + Minus", hl.dsp.window.move({ workspace = "special:0:Magic" }))
+hl.bind(
+	mainMod .. " + SHIFT + Minus",
+	hl.dsp.window.move({ workspace = "special:0:Magic" })
+)
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
@@ -252,57 +264,27 @@ hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
--- Laptop multimedia keys for volume and LCD brightness
-hl.bind(
-	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
-	{ locked = true, repeating = true }
-)
-hl.bind(
-	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
-	{ locked = true, repeating = true }
-)
-hl.bind(
-	"XF86AudioMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
-	{ locked = true, repeating = true }
-)
-hl.bind(
-	"XF86AudioMicMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
-	{ locked = true, repeating = true }
-)
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
-
--- Requires playerctl
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
-
 -- [[ Windows and Workspaces ]]
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
 hl.workspace_rule({
-  workspace = "1",
-  default_name = "1:Code",
-  persistent = true,
+	workspace = "1",
+	default_name = "1:Code",
+	persistent = true,
 })
 
 hl.workspace_rule({
-  workspace = "2",
-  default_name = "2:Office",
-  persistent = true,
-  layout = "scrolling",
+	workspace = "2",
+	default_name = "2:Office",
+	persistent = true,
+	layout = "scrolling",
 })
 
 hl.workspace_rule({
-  workspace = "3",
-  default_name = "3:Social",
-  persistent = true,
+	workspace = "3",
+	default_name = "3:Social",
+	persistent = true,
 })
 
 for i = 4, 10 do
