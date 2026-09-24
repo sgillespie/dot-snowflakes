@@ -29,7 +29,9 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd(
 		"waybar -c $HOME/.config/hypr/config.jsonc -s $HOME/.config/hypr/style.css"
 	)
-	hl.exec_cmd("hyprpaper")
+	hl.exec_cmd(
+		[[sh -c 'source /etc/os-release && exec hyprpaper -c "$HOME/.config/hypr/hyprpaper-$ID.conf"']]
+	)
 end)
 
 -- [[ Environment Variables ]]
