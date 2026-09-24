@@ -6,6 +6,17 @@ return {
 
     config = function(_, opts)
       vim.lsp.set_log_level('info')
+
+      vim.lsp.enable('stylua')
+      vim.lsp.config('stylua', {
+        cmd = {
+          "stylua",
+          "--lsp",
+          "--column-width",
+          "90",
+        },
+      })
+
       vim.lsp.enable('hls')
       vim.lsp.config('hls', {
         filetypes = { 'haskell', 'lhaskell' },
