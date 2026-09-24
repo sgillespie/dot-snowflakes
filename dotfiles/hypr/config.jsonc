@@ -8,11 +8,11 @@
     // Order of modules
     "modules-left": [
         "hyprland/workspaces",
-        "hyprland/submap",
         "hyprland/window"
     ],
 
     "modules-center": [
+        "hyprland/submap",
         "privacy"
     ],
 
@@ -40,6 +40,10 @@
     "hyprland/window": {
       "format": "{title}",
       "max-length": 40
+    },
+
+    "hyprland/submap": {
+      "format": "Submap:{}",
     },
 
     "disk": {
