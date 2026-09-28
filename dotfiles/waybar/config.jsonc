@@ -3,199 +3,82 @@
     "layer": "top",    // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "width": null,     // Waybar width
-    "spacing": 0,      // No gaps
+    "spacing": 0,      // Module padding is controlled by CSS
 
     // Order of modules
     "modules-left": [
-        "custom/cap-left", // Opening cap
-        "sway/workspaces", // Sway workspaces
-        "sway/mode",       // Show mode header
-        "sway/scratchpad",
-        "sway/window"      // Current window title
+        "hyprland/workspaces",
+        "hyprland/window"
     ],
 
     "modules-center": [
-        // Privacy requires pipewire, won't until after pulseaudio is abadoned
+        "hyprland/submap",
         "privacy"
     ],
 
     "modules-right": [
         "disk",
         "memory",
-        "cpu",
+        "load",
         "temperature",
-        "battery",
-        "network",
-        "pulseaudio",
-        "custom/tomato-slicer", // Pomodoro timer
-        "clock#utc", // UTC time
+        "clock#utc",
         "clock",
         "tray"
     ],
 
-    // Opening cap
-    "custom/cap-left": {
-        "exec": "sh ~/.config/waybar/os-logo.sh",
-        "interval": "once",
-        "format": "{}",
-        "tooltip": false
-    },
-
     // Modules configuration
-    "sway/workspaces": {
-        "persistent-workspaces": {
-          "1: Code": [],
-          "2: Office": [],
-          "3: Social": []
-        },
-        "disable-scroll": true,
-        "all-outputs": true,
-        "warp-on-scroll": false,
-        "format": "{icon} {value}",
-        "format-icons": {
-            "1: Code": "",
-            "2: Office": "",
-            "3: Social": "",
-            "urgent": "",
-            "default": ""
-        }
+    "hyprland/workspaces": {
+      "format": "{name}",
+      "show-special": true,
+      "persistent-workspaces": {
+        "1:Code": [],
+        "2:Office": [],
+        "3:Social": []
+      }
     },
 
-    "sway/mode": {
-        "format": "  <span style=\"italic\">{}</span>"
+    "hyprland/window": {
+      "format": "{title}",
+      "max-length": 40
     },
 
-    "sway/scratchpad": {
-        "format": "  {icon} {count} Scratchpad",
-        "show-empty": true,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
-
-    "sway/window": {
-        "format": "  {app_id}: {title}",
-        "max-length": 40,
-        "tooltip": true,
-        "all-outputs": true,
-        "icon": false
+    "hyprland/submap": {
+      "format": "Submap:{}",
     },
 
     "disk": {
-        "interval": 30,
-        "format": " {specific_used:0.0f}/{specific_total:0.0f} GiB",
-        "path": "/",
+        "format": "Disk:{specific_used:0.0f}/{specific_total:0.0f} GiB",
         "unit": "GiB"
     },
 
     "memory": {
-        "format": "  󰍛 {used:0.0f}/{total:0.0f} GiB" 
+        "format": "Mem:{used:0.0f}/{total:0.0f} GiB"
     },
 
-    "cpu": {
-        "format": "   {usage}% {load:0.1f}",
+    "load": {
+        "format": "Load:{load1:0.1f}",
         "tooltip": false
     },
 
     "temperature": {
-        // "thermal-zone": 2,
-        "hwmon-path": "/sys/class/hwmon/hwmon3/temp3_input",
+        "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+        "input-filename": "temp1_input",
         "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "  {icon} {temperatureC}°C",
-        "format-icons": ["", "", ""]
-    },
-
-    "network": {
-        "format-wifi": "   {essid}",
-        "format-ethernet": "  󰈀 {ipaddr}/{cidr}",
-        "tooltip-format": "󰌘 {ifname} via {gwaddr}",
-        "format-linked": "󰌘 {ifname} (No IP)",
-        "format-disconnected": "⚠ Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
-
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "  {icon} {volume}% {format_source}",
-        "format-bluetooth": "{icon} {volume}% {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": " {volume}%",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "󰏶",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ""
-        },
-        "on-click": "pavucontrol"
-    },
-
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}%",
-        "format-full": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{icon} {time}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format": "Temp:{temperatureC}C"
     },
 
     "clock": {
-        "interval": 1,
-        "format": "  {:%Y-%m-%d %H:%M:%S %Z}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    },
-
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}%",
-        "format-full": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{icon} {time}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-
-    "clock#utc": {
-        "interval": 1,
-        "timezone": "UTC",
-        "format": "  {:%H:%M:%S UTC}",
+        "format": "{:%Y-%m-%d %H:%M:%S %Z}",
         "tooltip": false
     },
 
-    "custom/tomato-slicer": {
-      "format": "  <span foreground=\"#FFA066\">󰔟</span> {text}",
-      "exec": "tomato-slicer --duration=1800",
-      "on-click": "pkill -SIGUSR1 -f tomato-slicer",
-      "on-click-right": "pkill -SIGUSR2 -f tomato-slicer",
-      "return-type": "json"
+    "clock#utc": {
+        "timezone": "UTC",
+        "format": "{:%H:%M %Z}",
+        "tooltip": false
     },
 
     "tray": {
-        "spacing": 10
-    },
-
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "spacing": 6
     },
 }

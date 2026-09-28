@@ -25,10 +25,11 @@ local menu = "rofi -show run"
 --
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 hl.on("hyprland.start", function()
-	hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
-	hl.exec_cmd(
-		"waybar -c $HOME/.config/hypr/config.jsonc -s $HOME/.config/hypr/style.css"
-	)
+	-- These _should_ be started by uwsm
+	-- hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
+	-- hl.exec_cmd(
+	-- 	"waybar -c $HOME/.config/hypr/config.jsonc -s $HOME/.config/hypr/style.css"
+	-- )
 	hl.exec_cmd(
 		[[sh -c 'source /etc/os-release && exec hyprpaper -c "$HOME/.config/hypr/hyprpaper-$ID.conf"']]
 	)
@@ -185,8 +186,8 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- See https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 -- [ Basic Launchers ]
-hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + Backspace", hl.dsp.exit())
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + SHIFT + Backspace", hl.dsp.exec_cmd("uwsm stop"))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(menu))
@@ -208,14 +209,14 @@ hl.bind(
 	mainMod .. " + F",
 	hl.dsp.window.fullscreen({ action = "toggle", mode = "maximized" })
 )
-hl.bind(mainMod .. " + Y", hl.dsp.window.close())
+hl.bind(mainMod .. " + SHIFT + Y", hl.dsp.window.close())
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 
 -- Manipulating workspaces (Dwindle)
-hl.bind(mainMod .. " + Return", hl.dsp.layout("movetoroot active stable"))
-hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.layout("movetoroot active unstable"))
-hl.bind(mainMod .. " + R", hl.dsp.layout("rotatesplit"))
+hl.bind(mainMod .. " + Space", hl.dsp.layout("movetoroot active stable"))
+hl.bind(mainMod .. " + SHIFT + Space", hl.dsp.layout("movetoroot active unstable"))
 hl.bind(mainMod .. " + S", hl.dsp.layout("swapsplit"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.layout("rotatesplit"))
 hl.bind(mainMod .. " + T", hl.dsp.layout("togglesplit"))
 
 -- Manipulating workspaces (Scrolling)
