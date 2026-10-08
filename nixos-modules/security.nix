@@ -3,6 +3,8 @@
   lib,
   ...
 }: {
+  hardware.nitrokey.enable = true;
+
   security = {
     pam = lib.mkIf config.security.pam.u2f.enable {
       u2f.settings = {
