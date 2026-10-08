@@ -14,6 +14,8 @@
     shell = pkgs.zsh;
 
     openssh.authorizedKeys.keys = [
+      # NitroKey
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF8d+yit/C9XwDP0PEROrlcVqYmHfD1fnhP+lYPLH6ea cardno:000F_E8D13873"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBWAhzvN9VsD3TV8+aoNqUkaLLhuM5uFg6eUkic+FyHm (none)"
     ];
   };
