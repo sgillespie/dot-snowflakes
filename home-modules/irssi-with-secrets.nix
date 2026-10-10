@@ -17,4 +17,10 @@
   '';
 in {
   home.packages = [wrappedIrssi];
+
+  sops = {
+    age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
+    defaultSopsFile = ../secrets/default.yaml;
+    secrets."irssi.env" = {};
+  };
 }

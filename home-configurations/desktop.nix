@@ -11,12 +11,6 @@ in {
     ./base.nix
   ];
 
-  sops = {
-    age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
-    defaultSopsFile = ../secrets/default.yaml;
-    secrets."irssi.env" = {};
-  };
-
   nixpkgs.config = {
     allowUnfreePredicate = pkg:
       builtins.elem (lib.getName pkg) (with pkgs; [
