@@ -7,6 +7,8 @@ return {
     config = function(_, opts)
       vim.lsp.set_log_level('info')
 
+      vim.lsp.enable('nil')
+
       vim.lsp.enable('stylua')
       vim.lsp.config('stylua', {
         cmd = {
