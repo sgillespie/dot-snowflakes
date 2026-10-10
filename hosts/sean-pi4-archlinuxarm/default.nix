@@ -7,7 +7,10 @@
 in {
   flake = {
     homeModules.overrides = {
-      targets.genericLinux.enable = true;
+      targets.genericLinux = {
+        enable = true;
+        gpu.enable = false;
+      };
     };
 
     homeConfigurations."sgillespie@sean-pi4-archlinuxarm" = withSystem system ({pkgs, ...}:
