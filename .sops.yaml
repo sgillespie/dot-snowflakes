@@ -22,3 +22,4 @@ creation_rules:
         age:
           - *sean-archlinux
           - *sean-work
+          - *sean-pi4-archlinuxarm
