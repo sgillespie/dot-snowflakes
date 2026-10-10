@@ -39,6 +39,7 @@
         # System/host configs (snowflakes)
         ./hosts/sean-archlinux/default.nix
         ./hosts/sean-work/default.nix
+        ./hosts/sean-pi4-archlinuxarm/default.nix
         ./hosts/nixos-recovery/default.nix
 
         # Local development tools
