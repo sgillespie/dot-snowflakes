@@ -11,7 +11,7 @@
       inputs.nix-index-database.nixosModules.default
 
       # User-defined modules
-      ../../nixos-modules/default.nix
+      ../../nixos-modules/desktop.nix
 
       # System configuration
       ./configuration.nix

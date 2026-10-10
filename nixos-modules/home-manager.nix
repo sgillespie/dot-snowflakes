@@ -7,7 +7,7 @@
 
     users.sgillespie = {
       imports = [
-        ../home-configurations/default.nix
+        ../home-configurations/desktop.nix
       ];
     };
   };

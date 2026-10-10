@@ -20,7 +20,7 @@ in {
         };
 
         modules = [
-          ../../home-configurations/default.nix
+          ../../home-configurations/desktop.nix
           inputs.self.homeModules.overrides
         ];
       });

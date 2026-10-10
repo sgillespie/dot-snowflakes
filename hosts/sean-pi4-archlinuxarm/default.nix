@@ -20,7 +20,7 @@ in {
         };
 
         modules = [
-          ../../home-configurations/default.nix
+          ../../home-configurations/headless.nix
           inputs.self.homeModules.overrides
         ];
       });
