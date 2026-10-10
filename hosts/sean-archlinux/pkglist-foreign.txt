@@ -3,6 +3,7 @@ cardano-db-sync-bin
 cardano-node-bin
 ghcup-hs-bin
 neovim-remote
+pamtester
 paru
 slack-desktop-wayland
 volantes-cursors-git
