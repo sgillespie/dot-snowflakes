@@ -10,4 +10,4 @@ in {
   imports = [
     ./base.nix
   ];
-};
+}
