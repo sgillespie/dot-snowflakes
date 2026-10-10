@@ -10,7 +10,7 @@ in {
       targets.genericLinux.enable = true;
     };
 
-    homeConfigurations.sgillespie = withSystem system ({pkgs, ...}:
+    homeConfigurations."sgillespie@sean-archlinux" = withSystem system ({pkgs, ...}:
       inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
