@@ -1,0 +1,10 @@
+age
+base
+direnv
+git
+linux-firmware
+net-tools
+nix
+openssh
+sudo
+which

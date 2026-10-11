@@ -1,0 +1,14 @@
+archlinuxarm-keyring
+dhcpcd
+dialog
+ex-vi-compat
+firmware-raspberrypi
+less
+linux-aarch64
+nano
+netctl
+raspberrypi-bootloader
+uboot-raspberrypi
+wireless-regdb
+wireless_tools
+wpa_supplicant
