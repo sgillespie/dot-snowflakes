@@ -63,13 +63,38 @@ hm-build *ARGS:
 # generates ArchLinux pacman package list
 [group('pacman')]
 pacman-pkglist:
-  pacman -Qqen > hosts/sean-archlinux/pkglist.txt
-  pacman -Qqem > hosts/sean-archlinux/pkglist-foreign.txt
+  pacman -Qqen | sort > hosts/$HOSTNAME/pkglist.txt
+  pacman -Qqem | sort > hosts/$HOSTNAME/pkglist-foreign.txt
+
+# run pacman-pkglist on a remote host
+[group('pacman')]
+pacman-remote-pkglist host name:
+  ssh "{{ host }}" "pacman -Qqen" | sort > "hosts/{{ name }}/pkglist.txt"
+  ssh "{{ host }}" "pacman -Qqem" | sort > "hosts/{{ name }}/pkglist-foreign.txt" || true
+
+# factors out the common pkglist entries into a common list
+[group('pacman')]
+pacman-base-pkglist:
+  #!/usr/bin/env bash
+  set -exu -o pipefail
+  # Create a temporary backup of the pkg lists
+  WORK_DIR=$(mktemp -d pkglist.XXXX)
+  cp hosts/sean-archlinux/pkglist.txt $WORK_DIR/pkglist-sean-archlinux.txt
+  cp hosts/sean-pi4-archlinuxarm/pkglist.txt $WORK_DIR/pkglist-sean-pi4-archlinuxarm.txt
+
+  comm -12 $WORK_DIR/pkglist-sean-archlinux.txt $WORK_DIR/pkglist-sean-pi4-archlinuxarm.txt \
+    > hosts/pkglist-base.txt
+  comm -13 hosts/pkglist-base.txt $WORK_DIR/pkglist-sean-archlinux.txt \
+    > hosts/sean-archlinux/pkglist.txt
+  comm -13 hosts/pkglist-base.txt $WORK_DIR/pkglist-sean-pi4-archlinuxarm.txt \
+    > hosts/sean-pi4-archlinuxarm/pkglist.txt
+
+  rm -r $WORK_DIR
 
 # installs/syncs packages in the ArchLinux pacman package list
 [group('pacman')]
 pacman-pkglist-apply:
-  sudo pacman -Sq --needed - < hosts/sean-archlinux/pkglist.txt
+  cat hosts/pkglist-base.txt hosts/$HOSTNAME/pkglist.txt | sort | sudo pacman -Sq --needed -
 
 # reloads the gpg-agent config
 [group('gpg-agent')]
