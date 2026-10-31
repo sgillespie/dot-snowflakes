@@ -49,6 +49,10 @@ return {
           return true
         end,
       })
+
+      vim.lsp.enable('rust_analyzer')
+      vim.lsp.config('rust_analyzer', {
+      })
     end,
 
     keys = {
