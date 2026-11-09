@@ -30,14 +30,9 @@
 	name = Sean D Gillespie
 	signingkey = 0x383B506B3D669229
 [includeIf "hasconfig:remote.*.url:git@github.com:input-output-hk/**"]
-        path = /home/sgillespie/.config/git/iohk.inc
+        path = /home/sgillespie/.config/git/ican.inc
 [includeIf "hasconfig:remote.*.url:git@github.com:IntersectMBO/**"]
-        path = /home/sgillespie/.config/git/iohk.inc
-[includeIf "hasconfig:remote.*.url:git@github.com:midnight-ntwrk/**"]
-        path = /home/sgillespie/.config/git/iohk.inc
-[includeIf "hasconfig:remote.*.url:git@github.com:midnightntwrk/**"]
-        path = /home/sgillespie/.config/git/iohk.inc
-[includeIf "hasconfig:remote.*.url:git@github.com:shieldedtech/**"]
-        path = /home/sgillespie/.config/git/iohk.inc
-[includeIf "hasconfig:remote.*.url:git@github.com:LFDT-Minokawa/**"]
-        path = /home/sgillespie/.config/git/iohk.inc
+        path = /home/sgillespie/.config/git/ican.inc
+[includeIf "hasconfig:remote.*.url:git@github.com:ican-group/**"]
+        path = /home/sgillespie/.config/git/ican.inc
+
