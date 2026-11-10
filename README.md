@@ -33,7 +33,7 @@ In order to use this project, you will need:
 
  * [Nix](https://nixos.org/download/)
  * [direnv](https://direnv.net/) (optional)
-
+ * [git](https://git-scm.com/)
 
 If using direnv, approve and load the environment:
 
@@ -114,7 +114,7 @@ Do decide whether to add a file, consider:
 
 Initialize/update the submodule:
 
-    just et-update
+    just etc-update
 
 Add a file to etckeeper:
 
@@ -135,6 +135,39 @@ To review changes at any time:
 
     sudo gitkeeper vcs status
     sudo gitkeeper vcs diff
+
+## Setting Up a New Headless Host
+
+First you will need a new SSH keypair to authenticate with GitHub:
+```
+ssh-keygen -t ed25519 -C "${USER}@${HOSTNAME}"
+```
+
+Then [Add it to your Account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+
+Clone the repository:
+```
+git clone git@github.com:sgillespie/dot-snowflakes
+cd dot-snowflakes
+git submodule update --init
+```
+
+Make sure you are a trusted user (`/etc/nix/nix.conf`):
+```
+# <-- Snip -->
+trusted-users = root @sudo
+```
+
+Enter the dev shell with the included configuration file:
+```
+NIX_USER_CONF_FILES=dotfiles/nix/nix.conf nix develop -v
+```
+
+Apply the home-manager configuration
+```
+just hm-apply
+```
+
 
 ## License
 
