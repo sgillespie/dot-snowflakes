@@ -82,6 +82,7 @@
       ghostty
       grim
       hyprlauncher
+      hyprpaper
       kanshi
       kitty
       lxappearance
