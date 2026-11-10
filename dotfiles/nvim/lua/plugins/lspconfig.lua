@@ -50,8 +50,18 @@ return {
         end,
       })
 
+
       vim.lsp.enable('rust_analyzer')
       vim.lsp.config('rust_analyzer', {
+      })
+
+      vim.lsp.enable('nil_ls')
+      vim.lsp.config('nil_ls', {
+        settings = {
+          ['nil'] = {
+            formatting = { command = { "alejandra" } },
+          },
+        },
       })
     end,
 
