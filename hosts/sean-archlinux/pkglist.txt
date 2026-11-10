@@ -39,6 +39,7 @@ debootstrap
 devtools
 dex
 discord
+docker
 e2fsprogs
 evince
 expac
@@ -59,6 +60,7 @@ hyprpaper
 hyprpm
 hyprpolkitagent
 hyprshutdown
+inetutils
 inter-font
 kanshi
 kitty
@@ -73,11 +75,13 @@ lxc
 mako
 materia-gtk-theme
 mesa
+mesa-utils
 mkosi
 namcap
 neovide
 networkmanager
 nitrokey-udev-rules
+nodejs
 noto-fonts-emoji
 npm
 nvchecker

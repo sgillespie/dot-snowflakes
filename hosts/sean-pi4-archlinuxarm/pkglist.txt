@@ -5,10 +5,14 @@ ex-vi-compat
 firmware-raspberrypi
 less
 linux-aarch64
+mosquitto
 nano
 netctl
+nodejs-lts-krypton
+openresolv
 raspberrypi-bootloader
 uboot-raspberrypi
 wireless-regdb
 wireless_tools
 wpa_supplicant
+zigbee2mqtt

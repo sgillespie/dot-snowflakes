@@ -25,6 +25,7 @@ rsync
 starship
 sudo
 ttf-input-nerd
+ufw
 unzip
 usbutils
 which
