@@ -192,6 +192,17 @@ hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(menu))
 
+-- [ Utilities ]
+-- Screenshot a region to the clipboard
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]]))
+hl.bind(
+	mainMod .. " + SHIFT + P",
+	hl.dsp.exec_cmd(
+		[[mkdir -p "$HOME/documents/screenshots" \
+			&& grim -g "$(slurp) $HOME/documents/screenshots/$(date +%4Y-%m-%d-%H:%M:%S).png"]]
+	)
+)
+
 -- [ Navigation ]
 -- Vim-style navigation
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
@@ -210,7 +221,7 @@ hl.bind(
 	hl.dsp.window.fullscreen({ action = "toggle", mode = "maximized" })
 )
 hl.bind(mainMod .. " + SHIFT + Y", hl.dsp.window.close())
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + SHIFT + O", hl.dsp.window.pseudo())
 
 -- Manipulating workspaces (Dwindle)
 hl.bind(mainMod .. " + Space", hl.dsp.layout("movetoroot active stable"))
