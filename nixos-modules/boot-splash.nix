@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
   cfg = config.boot.splash;
@@ -21,7 +20,6 @@ in
 
         # Enable "Silent boot"
         consoleLogLevel = 3;
-        initrd.verbose = false;
 
         kernelParams = [
           "quiet"

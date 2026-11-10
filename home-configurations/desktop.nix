@@ -34,24 +34,12 @@ in {
       # These packages aren't in official repositories, so we install it from nixpkgs
       brave
       claude-code
-      (iamb.overrideAttrs (oldAttrs: {
-        # Temporarily fix iamb display in tmux. The lock icon corrupts the display (stray
-        # characters, etc). This replaces the lock icon with a simple ascii character
-        #
-        # TODO[sgillespie]: The upstream fixes for this are unreleased. Try removing this
-        # after the next released version (>0.1.11)
-        postPatch =
-          (oldAttrs.postPatch or "")
-          + ''
-            substituteInPlace src/windows/room/chat.rs \
-              --replace-fail '\u{1F512}\u{FE0E} ' '> ' \
-              --replace-fail '\u{1F513}\u{FE0E} ' '> '
-          '';
-      }))
+      (iamb.overrideAttrs (_ : { dontCargoUseSystemLibs = true; }))
       neovim-remote
       nil
       pinentry-rofi
-      rofi-pass
+      # No longer in nixpkgs
+      # rofi-pass
       ssh-to-age
       slack
       ventoy-full
