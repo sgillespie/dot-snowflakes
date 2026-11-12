@@ -49,6 +49,8 @@ in
           xwayland.enable = true;
         };
 
+        hyprlock.enable = true;
+
         sway = {
           enable = true;
           wrapperFeatures.gtk = true;
@@ -72,7 +74,7 @@ in
               "${pkgs.tuigreet}/bin/tuigreet"
               "--time"
               "--sessions /run/current-system/sw/share/wayland-sessions"
-              "--cmd sway"
+              "--cmd 'uwsm start -e -D Hyprland hyprland.desktop'"
             ];
             user = "greeter";
           };

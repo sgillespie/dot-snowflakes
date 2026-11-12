@@ -29,12 +29,7 @@
     // Modules configuration
     "hyprland/workspaces": {
       "format": "{name}",
-      "show-special": true,
-      "persistent-workspaces": {
-        "1:Code": [],
-        "2:Office": [],
-        "3:Social": []
-      }
+      "show-special": true
     },
 
     "hyprland/window": {

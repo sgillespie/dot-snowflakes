@@ -13,6 +13,7 @@
       };
 
       services = {
+        hyprlock.u2f.control = "required";
         login.u2f.control = "required";
         greetd.u2f.control = "required";
         swaylock.u2f.control = "required";
