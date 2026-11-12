@@ -34,7 +34,7 @@ nix-update *ARGS:
 # builds a NixOS host configuration
 [group('nixos')]
 nixos-build host *ARGS:
-  nix build .#nixosConfigurations.{{host}}.config.system.build.toplevel
+  nix build .#nixosConfigurations.{{host}}.config.system.build.toplevel {{ ARGS }}
 
 # activates the NixOS current host configuration
 [group('nixos')]
