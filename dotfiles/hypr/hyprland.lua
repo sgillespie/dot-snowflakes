@@ -25,11 +25,10 @@ local menu = "rofi -show run"
 --
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 hl.on("hyprland.start", function()
-	-- These _should_ be started by uwsm
-	-- hl.exec_cmd("systemctl --user start hyprpolkitagent.service")
-	-- hl.exec_cmd(
-	-- 	"waybar -c $HOME/.config/hypr/config.jsonc -s $HOME/.config/hypr/style.css"
-	-- )
+	-- Load monitor profiles
+	hl.exec_cmd("uwsm-app -s b -t service -- kanshi")
+
+	-- Set wallpaper according to the running OS
 	hl.exec_cmd(
 		[[sh -c 'source /etc/os-release && exec hyprpaper -c "$HOME/.config/hypr/hyprpaper-$ID.conf"']]
 	)
