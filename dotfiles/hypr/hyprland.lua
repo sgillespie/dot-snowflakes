@@ -16,7 +16,7 @@ hl.monitor({
 
 -- [[ Programs ]]
 -- Set programs that you use
-local terminal = "ghostty"
+local terminal = "kitty"
 local fileManager = "pcmanfm"
 local menu = "rofi -show run"
 
