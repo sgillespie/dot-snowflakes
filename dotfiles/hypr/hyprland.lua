@@ -167,18 +167,8 @@ hl.config({
 	},
 })
 
-hl.gesture({
-	fingers = 3,
-	direction = "horizontal",
-	action = "workspace",
-})
-
--- Example per-device config
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
-hl.device({
-	name = "epic-mouse-v1",
-	sensitivity = -0.5,
-})
+-- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for Per-device
+-- examples
 
 -- [[ Keybindings ]]
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
@@ -190,6 +180,20 @@ hl.bind(mainMod .. " + SHIFT + Backspace", hl.dsp.exec_cmd("uwsm stop"))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(menu))
+
+-- Floating terminal windows
+
+local float_term = {
+	float = true,
+	-- Move to top center
+	move = { "(monitor_w - window_w) * 0.5", 45 },
+	size = { "monitor_w * 0.6", "monitor_h * 0.5" },
+}
+
+hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.exec_cmd(terminal, float_term))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(terminal .. " bluetuith", float_term))
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(terminal .. " pulsemixer", float_term))
+hl.bind(mainMod .. " + X", hl.dsp.exec_cmd(terminal .. " passepartui", float_term))
 
 -- [ Utilities ]
 -- Screenshot a region to the clipboard
@@ -307,10 +311,10 @@ for i = 4, 10 do
 	})
 end
 
--- Example window rules that are useful
+-- [ Window Rules ]
 
-local suppressMaximizeRule = hl.window_rule({
-	-- Ignore maximize requests from all apps. You'll probably like this.
+hl.window_rule({
+	-- Ignore maximize requests from all apps
 	name = "suppress-maximize-events",
 	match = { class = ".*" },
 	suppress_event = "maximize",
@@ -332,19 +336,16 @@ hl.window_rule({
 	no_focus = true,
 })
 
--- Layer rules also return a handle.
--- local overlayLayerRule = hl.layer_rule({
---     name  = "no-anim-overlay",
---     match = { namespace = "^my-overlay$" },
---     no_anim = true,
--- })
--- overlayLayerRule:set_enabled(false)
-
--- Hyprland-run windowrule
 hl.window_rule({
-	name = "move-hyprland-run",
-	match = { class = "hyprland-run" },
-
-	move = "20 monitor_h-120",
+	-- Float Spotify window
+	name = "float-spotify",
+	match = {
+		class = "Spotify",
+	},
 	float = true,
+	size = {
+		"monitor_w * 0.75",
+		"monitor_h * 0.75",
+	},
+	center = true,
 })

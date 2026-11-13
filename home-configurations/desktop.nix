@@ -37,6 +37,7 @@ in {
       (iamb.overrideAttrs (_ : { dontCargoUseSystemLibs = true; }))
       neovim-remote
       nil
+      passepartui
       pinentry-rofi
       # No longer in nixpkgs
       # rofi-pass
