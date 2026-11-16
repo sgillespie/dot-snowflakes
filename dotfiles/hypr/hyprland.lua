@@ -144,6 +144,7 @@ hl.config({
 	misc = {
 		force_default_wallpaper = 0,
 		disable_hyprland_logo = true,
+		font_family = "AtkynsonMono Nerd Font",
 	},
 })
 
@@ -181,7 +182,38 @@ hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(menu))
 
--- Floating terminal windows
+-- Create a launcher submap and a notification showing the keybindings
+local launch_notification
+
+hl.on("keybinds.submap", function(name)
+	if launch_notification and launch_notification:is_alive() then
+		launch_notification:dismiss()
+	end
+
+	if name == "run" then
+		launch_notification = hl.notification.create({
+			text = "Launch: [N]eovide | [B]rave | [S]lack | [T]hunderbird | [D]iscord | S[p]otify | [Esc] Cancel",
+			timeout = 30000,
+			icon = "hint",
+			font_size = 12,
+			color = "rgba(C0A36Eff)",
+		})
+	end
+end)
+
+hl.bind(mainMod .. " + R", hl.dsp.submap("run"))
+
+hl.define_submap("run", "reset", function()
+	hl.bind("N", hl.dsp.exec_cmd("neovide"))
+	hl.bind("B", hl.dsp.exec_cmd("brave"))
+	hl.bind("S", hl.dsp.exec_cmd("slack"))
+	hl.bind("T", hl.dsp.exec_cmd("thunderbird"))
+	hl.bind("D", hl.dsp.exec_cmd("discord"))
+	hl.bind("S", hl.dsp.exec_cmd("spotify-launcher"))
+	hl.bind("Escape", hl.dsp.submap("reset"))
+end)
+
+-- Floating TUI windows
 
 local float_term = {
 	float = true,
@@ -192,6 +224,7 @@ local float_term = {
 
 hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.exec_cmd(terminal, float_term))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(terminal .. " bluetuith", float_term))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(terminal .. " nmtui", float_term))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(terminal .. " pulsemixer", float_term))
 hl.bind(mainMod .. " + X", hl.dsp.exec_cmd(terminal .. " passepartui", float_term))
 
