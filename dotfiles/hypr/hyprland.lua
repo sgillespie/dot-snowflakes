@@ -209,7 +209,7 @@ hl.define_submap("run", "reset", function()
 	hl.bind("S", hl.dsp.exec_cmd("slack"))
 	hl.bind("T", hl.dsp.exec_cmd("thunderbird"))
 	hl.bind("D", hl.dsp.exec_cmd("discord"))
-	hl.bind("S", hl.dsp.exec_cmd("spotify-launcher"))
+	hl.bind("P", hl.dsp.exec_cmd("spotify-launcher"))
 	hl.bind("Escape", hl.dsp.submap("reset"))
 end)
 
