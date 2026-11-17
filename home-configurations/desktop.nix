@@ -32,6 +32,7 @@ in {
     # Brave isn't in pacman official repositories, so install it from nixpkgs
     packages = with pkgs; [
       # These packages aren't in official repositories, so we install it from nixpkgs
+      bluetuith
       brave
       claude-code
       (iamb.overrideAttrs (_ : { dontCargoUseSystemLibs = true; }))
